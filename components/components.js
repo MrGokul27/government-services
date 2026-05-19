@@ -1,7 +1,5 @@
 function componentPath(file) {
-  const depth = location.pathname.split("/").filter(Boolean).length - 1;
-  const prefix = depth > 0 ? "../".repeat(depth) : "";
-  return prefix + "components/" + file;
+  return "components/" + file;
 }
 
 async function loadComponent(selector, file, position = "innerHTML") {
@@ -21,10 +19,13 @@ async function loadComponent(selector, file, position = "innerHTML") {
 }
 
 function setActiveNav() {
-  const page = location.pathname.split("/").pop() || "index.html";
+  // Get the current filename (e.g., "about.html") or default to "index.html"
+  let page = location.pathname.split("/").pop();
+  if (!page || page === "" || page === "/") page = "index.html";
+
   document.querySelectorAll(".ova-menu a, .ova-canvas-menu a").forEach((a) => {
     const href = a.getAttribute("href") || "";
-    if (href === page || (page === "" && href === "index.html")) {
+    if (href === page) {
       a.classList.add("nav-active");
     }
   });
