@@ -1,4 +1,5 @@
-html, body.auth-body {
+html,
+body.auth-body {
   height: 100%;
   margin: 0;
   font-family: "Cabin", sans-serif; /* Use theme font for consistency */
@@ -9,7 +10,7 @@ html, body.auth-body {
   /* Updated background for attractiveness, consistent with theme's preloader/404 */
   background: #06163a;
   background: radial-gradient(circle at center, #1b2a4a 0%, #06163a 100%);
-  min-height: 100vh; /* Ensure it takes full viewport height */
+  height: 100vh; /* Fixed height to keep it within screen */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,16 +21,21 @@ html, body.auth-body {
 /* Decorative background shapes - similar to 404 page */
 .auth-section::before,
 .auth-section::after {
-  content: '';
+  content: "";
   position: absolute;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
   filter: blur(1px);
   animation: float 20s infinite ease-in-out;
   z-index: 0;
 }
 
-.auth-section::before { /* Shape 1 */
+.auth-section::before {
+  /* Shape 1 */
   width: 300px;
   height: 300px;
   top: -100px;
@@ -37,47 +43,64 @@ html, body.auth-body {
   animation-delay: 0s;
 }
 
-.auth-section::after { /* Shape 2 */
+.auth-section::after {
+  /* Shape 2 */
   width: 200px;
   height: 200px;
   bottom: 10%;
   right: 5%;
-  background: linear-gradient(135deg, rgba(200, 16, 46, 0.05) 0%, rgba(200, 16, 46, 0) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(200, 16, 46, 0.05) 0%,
+    rgba(200, 16, 46, 0) 100%
+  );
   animation-delay: -5s;
 }
 
 @keyframes float {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  33% { transform: translate(30px, 50px) rotate(10deg); }
-  66% { transform: translate(-20px, 20px) rotate(-10deg); }
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(30px, 50px) rotate(10deg);
+  }
+  66% {
+    transform: translate(-20px, 20px) rotate(-10deg);
+  }
 }
 
 .auth-card {
   background: #fff;
-  padding: 45px; /* Increased padding */
+  padding: 35px 45px; /* Adjusted padding to be more compact */
   border-radius: 12px; /* Slightly more rounded corners */
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); /* Deeper shadow for depth */
   width: 100%;
-  max-width: 500px;
+  max-width: 550px; /* Slightly wider for better 2-column layout */
   position: relative; /* For z-index */
   z-index: 1; /* Ensure card is above background elements */
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle white border */
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.auth-logo {
-  display: block;
-  margin: 0 auto 30px auto; /* Center logo and add margin below */
-  width: 180px; /* Adjust size as needed */
+.auth-corner-logo {
+  position: absolute;
+  top: 30px;
+  left: 40px;
+  z-index: 10;
+}
+
+.auth-corner-logo img {
+  width: 160px;
   height: auto;
 }
 
 .auth-card h2 {
-  font-size: 30px; /* Larger heading */
+  font-size: 26px;
   font-weight: 700;
   color: #1b2a4a;
-  margin-bottom: 30px; /* Increased margin */
+  margin-bottom: 25px;
   text-align: center;
-  text-transform: uppercase; /* Consistent with theme headings */
+  text-transform: uppercase;
   letter-spacing: 1px;
 }
 
@@ -85,23 +108,23 @@ html, body.auth-body {
   font-weight: 600;
   color: #1b2a4a;
   font-size: 0.95rem; /* Slightly larger label */
-  margin-bottom: 10px; /* Increased margin */
+  margin-bottom: 6px;
 }
 
-.auth-form .form-control, 
+.auth-form .form-control,
 .auth-form .form-select {
-  padding: 14px 18px; /* Increased padding */
+  padding: 10px 15px; /* Compact padding */
   border: 1px solid #e1e8f0;
   border-radius: 8px; /* More rounded inputs */
   font-size: 0.95rem; /* Slightly larger font */
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: all 0.3s ease;
   background-color: #f8f9fc; /* Light background for inputs */
 }
 
 .auth-form .form-control:focus,
 .auth-form .form-select:focus {
   border-color: #c8102e;
-  box-shadow: 0 0 0 0.25rem rgba(200, 16, 46, 0.2); /* More prominent focus shadow */
+  box-shadow: 0 0 0 4px rgba(200, 16, 46, 0.1);
   outline: none;
   background-color: #fff; /* White background on focus */
 }
@@ -110,12 +133,12 @@ html, body.auth-body {
   background-color: #c8102e;
   color: #fff;
   border: none;
-  padding: 16px; /* Increased padding */
+  padding: 14px;
   font-weight: 700;
-  border-radius: 8px; /* More rounded button */
+  border-radius: 8px;
   width: 100%;
-  margin-top: 25px; /* Increased margin */
-  transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+  margin-top: 15px;
+  transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 1px; /* Increased letter spacing */
   box-shadow: 0 5px 15px rgba(200, 16, 46, 0.3); /* Add shadow to button */
@@ -129,7 +152,7 @@ html, body.auth-body {
 }
 
 .auth-footer {
-  margin-top: 30px; /* Increased margin */
+  margin-top: 20px;
   text-align: center;
   font-size: 0.95rem; /* Slightly larger font */
   color: #6b7a99;
@@ -139,7 +162,9 @@ html, body.auth-body {
   color: #c8102e;
   text-decoration: none;
   font-weight: 600;
-  transition: color 0.2s, text-decoration 0.2s;
+  transition:
+    color 0.2s,
+    text-decoration 0.2s;
 }
 
 .auth-footer a:hover {

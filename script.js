@@ -5,7 +5,7 @@
     // Use a fixed timeout from the moment the script initializes
     // to ensure user sees the "attractive" UI for 3 seconds.
     // This also ensures that if the page loads very quickly, the user still sees the preloader briefly.
-    window.addEventListener('load', () => {
+    window.addEventListener("load", () => {
       setTimeout(() => {
         preloader.classList.add("fade-out");
       }, 3000);

@@ -1,4 +1,3 @@
-
 /* ----- Main Content Section ----- */
 .contact-main {
   padding: 100px 0;
@@ -37,7 +36,8 @@
   margin-bottom: 5px;
 }
 
-.detail-text span, .detail-text a {
+.detail-text span,
+.detail-text a {
   color: #6c7a8e;
   text-decoration: none;
   font-size: 16px;
@@ -82,10 +82,18 @@
   color: #fff;
 }
 
-.social-icon.twitter { background-color: #18a6f0; }
-.social-icon.facebook { background-color: #3b5998; }
-.social-icon.youtube { background-color: #ff0000; }
-.social-icon.linkedin { background-color: #4c5fd7; }
+.social-icon.twitter {
+  background-color: #18a6f0;
+}
+.social-icon.facebook {
+  background-color: #3b5998;
+}
+.social-icon.youtube {
+  background-color: #ff0000;
+}
+.social-icon.linkedin {
+  background-color: #4c5fd7;
+}
 
 /* ----- Form Styles ----- */
 .contact-form-box {
