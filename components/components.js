@@ -1,5 +1,7 @@
 function componentPath(file) {
-  return "components/" + file;
+  // On GitHub Pages, using a relative path from the root folder is safest.
+  // This ensures the path is always 'components/filename.html' relative to the base URL.
+  return "./components/" + file;
 }
 
 async function loadComponent(selector, file, position = "innerHTML") {
@@ -7,6 +9,10 @@ async function loadComponent(selector, file, position = "innerHTML") {
   if (!el) return;
   try {
     const res = await fetch(componentPath(file));
+    // Check if the file was actually found.
+    // Prevents injecting GitHub's 404 page into the header/footer.
+    if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+
     const html = await res.text();
     if (position === "innerHTML") {
       el.innerHTML = html;
