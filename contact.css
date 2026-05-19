@@ -196,7 +196,7 @@
 .contact-form-box:hover {
   transform: translateY(-8px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-  border-color: #0067da;
+  border-color: #1b2a4a;
 }
 
 .contact-form-box h3 {
@@ -218,12 +218,12 @@
 }
 
 .contact-form .form-control:focus {
-  border-color: #0067da;
+  border-color: #1b2a4a;
   box-shadow: 0 0 0 3px rgba(0, 103, 218, 0.1);
 }
 
 .contact-submit-btn {
-  background-color: #0067da;
+  background-color: #1b2a4a;
   color: #fff;
   border: none;
   padding: 14px 35px;

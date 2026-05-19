@@ -243,7 +243,7 @@ body {
 }
 
 .blog_pagination .pagination li.active a {
-  background-color: #0067da;
+  background-color: #1b2a4a;
   color: white;
   border-color: #0067da;
   box-shadow: 0 5px 15px rgba(0, 103, 218, 0.3);
