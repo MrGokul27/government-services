@@ -56,4 +56,14 @@ document.addEventListener("DOMContentLoaded", async () => {
       canvas.classList.remove("open");
       overlay.classList.remove("open");
     });
+
+  // Redirect placeholder links to 404 page
+  document.querySelectorAll('a[href="#"], a:not([href])').forEach((link) => {
+    link.addEventListener("click", function (e) {
+      // Prevent default behavior for placeholder links
+      e.preventDefault();
+      // Redirect to the 404 page
+      window.location.href = "404.html";
+    });
+  });
 });

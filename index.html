@@ -15,6 +15,20 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div id="preloader">
+      <div class="loader-content">
+        <div class="loader-visual-wrap">
+          <div class="loader-ring"></div>
+          <img
+            src="assets/images/logoStackly.webp"
+            alt="Loading..."
+            class="loader-logo"
+          />
+        </div>
+        <div class="loader-line"></div>
+        <span class="loader-status">Municipal Data Syncing</span>
+      </div>
+    </div>
     <div id="site-header"></div>
 
     <!-- Hero Slider -->
@@ -814,6 +828,34 @@
         /></a>
       </div>
     </section>
+
+    <!-- Newsletter Section -->
+    <div class="index-newsletter-wrap pb-3">
+      <div class="ova-newsletter">
+        <div class="ova-newsletter-inner py-4">
+          <div class="ova-newsletter-left">
+            <i class="bi bi-envelope-paper"></i>
+            <h2>Be Updated with us</h2>
+          </div>
+          <div class="ova-newsletter-right">
+            <form class="ova-newsletter-form" onsubmit="return false;">
+              <input
+                type="text"
+                placeholder="Your Name"
+                aria-label="Your Name"
+              />
+              <input
+                type="email"
+                placeholder="Your Email"
+                aria-label="Your Email"
+                required
+              />
+              <button type="submit">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div id="site-footer"></div>
 

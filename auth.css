@@ -1,0 +1,174 @@
+html, body.auth-body {
+  height: 100%;
+  margin: 0;
+  font-family: "Cabin", sans-serif; /* Use theme font for consistency */
+}
+
+.auth-section {
+  padding: 80px 20px;
+  /* Updated background for attractiveness, consistent with theme's preloader/404 */
+  background: #06163a;
+  background: radial-gradient(circle at center, #1b2a4a 0%, #06163a 100%);
+  min-height: 100vh; /* Ensure it takes full viewport height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* For potential decorative elements */
+  overflow: hidden; /* Hide overflow from decorative elements */
+}
+
+/* Decorative background shapes - similar to 404 page */
+.auth-section::before,
+.auth-section::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+  filter: blur(1px);
+  animation: float 20s infinite ease-in-out;
+  z-index: 0;
+}
+
+.auth-section::before { /* Shape 1 */
+  width: 300px;
+  height: 300px;
+  top: -100px;
+  left: -50px;
+  animation-delay: 0s;
+}
+
+.auth-section::after { /* Shape 2 */
+  width: 200px;
+  height: 200px;
+  bottom: 10%;
+  right: 5%;
+  background: linear-gradient(135deg, rgba(200, 16, 46, 0.05) 0%, rgba(200, 16, 46, 0) 100%);
+  animation-delay: -5s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(30px, 50px) rotate(10deg); }
+  66% { transform: translate(-20px, 20px) rotate(-10deg); }
+}
+
+.auth-card {
+  background: #fff;
+  padding: 45px; /* Increased padding */
+  border-radius: 12px; /* Slightly more rounded corners */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+  width: 100%;
+  max-width: 500px;
+  position: relative; /* For z-index */
+  z-index: 1; /* Ensure card is above background elements */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle white border */
+}
+
+.auth-logo {
+  display: block;
+  margin: 0 auto 30px auto; /* Center logo and add margin below */
+  width: 180px; /* Adjust size as needed */
+  height: auto;
+}
+
+.auth-card h2 {
+  font-size: 30px; /* Larger heading */
+  font-weight: 700;
+  color: #1b2a4a;
+  margin-bottom: 30px; /* Increased margin */
+  text-align: center;
+  text-transform: uppercase; /* Consistent with theme headings */
+  letter-spacing: 1px;
+}
+
+.auth-form .form-label {
+  font-weight: 600;
+  color: #1b2a4a;
+  font-size: 0.95rem; /* Slightly larger label */
+  margin-bottom: 10px; /* Increased margin */
+}
+
+.auth-form .form-control, 
+.auth-form .form-select {
+  padding: 14px 18px; /* Increased padding */
+  border: 1px solid #e1e8f0;
+  border-radius: 8px; /* More rounded inputs */
+  font-size: 0.95rem; /* Slightly larger font */
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background-color: #f8f9fc; /* Light background for inputs */
+}
+
+.auth-form .form-control:focus,
+.auth-form .form-select:focus {
+  border-color: #c8102e;
+  box-shadow: 0 0 0 0.25rem rgba(200, 16, 46, 0.2); /* More prominent focus shadow */
+  outline: none;
+  background-color: #fff; /* White background on focus */
+}
+
+.auth-btn {
+  background-color: #c8102e;
+  color: #fff;
+  border: none;
+  padding: 16px; /* Increased padding */
+  font-weight: 700;
+  border-radius: 8px; /* More rounded button */
+  width: 100%;
+  margin-top: 25px; /* Increased margin */
+  transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 1px; /* Increased letter spacing */
+  box-shadow: 0 5px 15px rgba(200, 16, 46, 0.3); /* Add shadow to button */
+}
+
+.auth-btn:hover {
+  background-color: #a50d26;
+  color: #fff;
+  transform: translateY(-2px); /* More pronounced lift */
+  box-shadow: 0 8px 20px rgba(200, 16, 46, 0.4); /* More pronounced shadow on hover */
+}
+
+.auth-footer {
+  margin-top: 30px; /* Increased margin */
+  text-align: center;
+  font-size: 0.95rem; /* Slightly larger font */
+  color: #6b7a99;
+}
+
+.auth-footer a {
+  color: #c8102e;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s, text-decoration 0.2s;
+}
+
+.auth-footer a:hover {
+  color: #a50d26;
+  text-decoration: underline; /* Underline on hover */
+}
+
+/* Checkbox styling */
+.form-check-input:checked {
+  background-color: #c8102e;
+  border-color: #c8102e;
+}
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.25rem rgba(200, 16, 46, 0.25);
+}
+.form-check-label {
+  color: #6b7a99 !important; /* Ensure consistent text color */
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .auth-card {
+    padding: 30px 20px;
+    margin: 0 15px; /* Add some horizontal margin on small screens */
+  }
+  .auth-card h2 {
+    font-size: 24px;
+  }
+  .auth-logo {
+    width: 150px;
+  }
+}

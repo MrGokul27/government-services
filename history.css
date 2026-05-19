@@ -1,0 +1,257 @@
+/* HERO */
+.hist-hero {
+  position: relative;
+  background: url("https://demo.ovathemewp.com/egovt/wp-content/uploads/2020/08/history_bg_header.jpg")
+    center center / cover no-repeat;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hist-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 22, 58, 0.55);
+}
+.hist-hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: left;
+  padding: 60px 40px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.hist-hero-content h1 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+/* INTRO */
+.hist-intro {
+  background: #fff;
+  padding: 80px 40px;
+}
+.hist-intro-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.hist-intro h2 {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 700;
+  color: #1b2a4a;
+  margin-bottom: 20px;
+}
+.hist-intro-lead {
+  color: #202b5d;
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+.hist-intro-body {
+  color: #6b7a99;
+  font-size: 0.92rem;
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* TWO IMAGES */
+.hist-images {
+  background: #f5f6fa;
+  padding: 0 40px 60px;
+}
+.hist-images-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+.hist-images-inner img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* TIMELINE SECTION */
+.hist-timeline-section {
+  background: #fff;
+  padding: 80px 40px;
+}
+.hist-timeline-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 60px;
+}
+.hist-timeline-header h2 {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 700;
+  color: #1b2a4a;
+  margin-bottom: 12px;
+}
+.hist-timeline-header p {
+  color: #6b7a99;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Timeline items */
+.hist-timeline {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+.hist-timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  background: #e5e9f0;
+}
+.hist-tl-item {
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 60px;
+}
+.hist-tl-item:last-child {
+  margin-bottom: 0;
+}
+.hist-tl-reverse .hist-tl-image {
+  order: 3;
+}
+.hist-tl-reverse .hist-tl-connector {
+  order: 2;
+}
+.hist-tl-reverse .hist-tl-content {
+  order: 1;
+  text-align: right;
+}
+.hist-tl-image img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+}
+.hist-tl-connector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.hist-tl-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #c8102e;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 3px #c8102e;
+  display: block;
+}
+.hist-tl-content {
+  padding: 0 30px;
+}
+.hist-tl-year {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #c8102e;
+  margin-bottom: 8px;
+  line-height: 1;
+}
+.hist-tl-content h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1b2a4a;
+  margin-bottom: 12px;
+}
+.hist-tl-content p {
+  color: #6b7a99;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* LATEST PUBLICATIONS */
+.hist-news {
+  background: #f5f6fa;
+  padding: 80px 40px;
+}
+.hist-news-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.hist-news-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.hist-news-header h2 {
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  font-weight: 700;
+  color: #1b2a4a;
+  margin-bottom: 8px;
+}
+.hist-news-header p {
+  color: #6b7a99;
+  font-size: 0.92rem;
+  margin: 0;
+}
+.hist-news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hist-intro,
+  .hist-timeline-section,
+  .hist-news {
+    padding: 50px 16px;
+  }
+  .hist-images {
+    padding: 0 16px 40px;
+  }
+  .hist-images-inner {
+    grid-template-columns: 1fr;
+  }
+  .hist-timeline::before {
+    display: none;
+  }
+  .hist-tl-item,
+  .hist-tl-reverse .hist-tl-image,
+  .hist-tl-reverse .hist-tl-connector,
+  .hist-tl-reverse .hist-tl-content {
+    display: block;
+    order: unset;
+    text-align: left;
+  }
+  .hist-tl-item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .hist-tl-connector {
+    justify-content: flex-start;
+  }
+  .hist-news-grid {
+    grid-template-columns: 1fr;
+  }
+  .hist-hero-content {
+    padding: 40px 16px;
+  }
+}
+@media (max-width: 600px) {
+  .hist-news-grid {
+    grid-template-columns: 1fr;
+  }
+}

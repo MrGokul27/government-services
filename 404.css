@@ -1,0 +1,214 @@
+/* ----- Full Screen Error Wrapper ----- */
+.error-page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #06163a;
+  background: radial-gradient(circle at center, #1b2a4a 0%, #06163a 100%);
+  color: #ffffff;
+  padding: 40px 20px;
+  overflow: hidden;
+}
+
+/* ----- Background Decoration ----- */
+.error-bg-decoration {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  filter: blur(1px);
+  animation: float 20s infinite ease-in-out;
+}
+
+.shape-1 {
+  width: 300px;
+  height: 300px;
+  top: -100px;
+  left: -50px;
+  animation-delay: 0s;
+}
+
+.shape-2 {
+  width: 200px;
+  height: 200px;
+  bottom: 10%;
+  right: 5%;
+  background: linear-gradient(
+    135deg,
+    rgba(200, 16, 46, 0.05) 0%,
+    rgba(200, 16, 46, 0) 100%
+  );
+  animation-delay: -5s;
+}
+
+.shape-3 {
+  width: 150px;
+  height: 150px;
+  top: 20%;
+  right: 15%;
+  animation-delay: -10s;
+  animation-duration: 25s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(30px, 50px) rotate(10deg);
+  }
+  66% {
+    transform: translate(-20px, 20px) rotate(-10deg);
+  }
+}
+
+.error-inner-content {
+  max-width: 650px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.error-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.error-code {
+  font-size: clamp(120px, 20vw, 220px);
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.05);
+  background: linear-gradient(to bottom, #ffffff 30%, rgba(255, 255, 255, 0.1));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+  margin: 0;
+  letter-spacing: -10px;
+  z-index: 1;
+}
+
+.error-circle {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: rgba(200, 16, 46, 0.1);
+  filter: blur(80px);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.error-glow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 103, 218, 0.15) 0%,
+    transparent 70%
+  );
+  z-index: 0;
+  animation: pulse 4s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+.error-title {
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 15px;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 0.2s forwards;
+}
+
+.error-message {
+  font-size: 1.1rem;
+  color: #9aaac0;
+  margin-bottom: 40px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 0.4s forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.error-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 0.6s forwards;
+}
+
+.btn-error-home {
+  display: inline-block;
+  padding: 14px 35px;
+  background-color: #0067da;
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.btn-error-home:hover {
+  background-color: #df193a;
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(223, 25, 58, 0.3);
+}
+
+.btn-error-contact {
+  display: inline-block;
+  padding: 14px 35px;
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.btn-error-contact:hover {
+  border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-3px);
+}
