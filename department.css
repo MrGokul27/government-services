@@ -1,3 +1,15 @@
+/* ----- Animations ----- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* HERO */
 .dept-hero {
   position: relative;
@@ -22,6 +34,10 @@
   max-width: 1200px;
   margin: 0 auto;
 }
+.dept-hero .page-hero-content {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
 .dept-hero-content h1 {
   font-size: clamp(1.8rem, 4vw, 2.8rem);
   font-weight: 700;
@@ -42,6 +58,8 @@
 .dept-heading {
   text-align: center;
   margin-bottom: 50px;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 0.2s forwards;
 }
 .dept-heading h2 {
   font-size: clamp(1.4rem, 3vw, 2rem);
@@ -66,10 +84,38 @@
   background: #fff;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
   overflow: hidden;
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards;
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
 }
+
+.dept-grid .dept-card:nth-child(1) {
+  animation-delay: 0.3s;
+}
+.dept-grid .dept-card:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.dept-grid .dept-card:nth-child(3) {
+  animation-delay: 0.5s;
+}
+.dept-grid .dept-card:nth-child(4) {
+  animation-delay: 0.6s;
+}
+.dept-grid .dept-card:nth-child(5) {
+  animation-delay: 0.7s;
+}
+.dept-grid .dept-card:nth-child(6) {
+  animation-delay: 0.8s;
+}
+.dept-grid .dept-card:nth-child(7) {
+  animation-delay: 0.9s;
+}
+.dept-grid .dept-card:nth-child(8) {
+  animation-delay: 1s;
+}
+
 .dept-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 10px 36px rgba(0, 0, 0, 0.13);
