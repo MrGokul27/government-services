@@ -382,6 +382,61 @@ body {
   transition: left 0.3s ease;
   overflow-y: auto;
 }
+
+.ova-canvas-header {
+  padding: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ova-canvas-logo img {
+  max-width: 140px;
+  height: auto;
+}
+
+.ova-canvas-auth {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn-canvas-auth {
+  display: block;
+  padding: 12px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.btn-canvas-login {
+  background: transparent;
+  color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-canvas-register {
+  background: #c8102e;
+  color: #fff;
+  border: 1.5px solid #c8102e;
+}
+
+.btn-canvas-login:hover {
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.btn-canvas-register:hover {
+  background: #a50d26;
+  border-color: #a50d26;
+}
+
 .ova-canvas.open {
   left: 0;
 }
@@ -389,10 +444,10 @@ body {
   background: none;
   border: none;
   color: #fff;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   cursor: pointer;
-  padding: 4px 20px 16px;
-  display: block;
+  padding: 0;
+  line-height: 1;
 }
 .ova-canvas-menu {
   list-style: none;
@@ -1120,9 +1175,10 @@ body {
 
 /* Discover City */
 .ova-discover {
-  background: url("https://demo.ovathemewp.com/egovt/wp-content/uploads/2020/07/home5-3.jpg")
-    center center / cover no-repeat;
+  background: url("assets/images/aboutUs/home5-3.webp") center center / cover
+    no-repeat;
   position: relative;
+  background-attachment: fixed;
   padding: 120px 40px;
   text-align: center;
 }
@@ -1599,11 +1655,11 @@ body {
 }
 .ova-counter-suffix {
   font-size: 1.6rem;
-  color: #c8102e;
+  color: #fff;
   font-weight: 700;
 }
 .ova-counter-title {
-  color: #9aaac0;
+  color: #fff;
   font-size: 0.9rem;
   line-height: 1.6;
   margin: 0;
@@ -1789,7 +1845,6 @@ body {
   align-items: center;
   justify-content: center;
 }
-
 /* ----- Standard Page Banner (Hero) ----- */
 .page-hero {
   background: linear-gradient(92deg, #06163a 0%, #0b2a5c 100%);
