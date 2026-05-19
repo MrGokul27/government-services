@@ -2,7 +2,8 @@ html,
 body.auth-body {
   height: 100%;
   margin: 0;
-  font-family: "Cabin", sans-serif; /* Use theme font for consistency */
+  padding-top: 0 !important;
+  font-family: "Cabin", sans-serif;
 }
 
 .auth-section {
@@ -80,6 +81,17 @@ body.auth-body {
   position: relative; /* For z-index */
   z-index: 1; /* Ensure card is above background elements */
   border: 1px solid rgba(255, 255, 255, 0.2);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-top 0.3s ease;
+  border-top: 0px solid #c8102e;
+}
+
+.auth-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  border-top: 5px solid #c8102e;
 }
 
 .auth-corner-logo {

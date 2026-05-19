@@ -1,8 +1,20 @@
+/* ----- Animations ----- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* HERO */
 .ev-hero {
   position: relative;
-  background: url("https://demo.ovathemewp.com/egovt/wp-content/uploads/2020/07/bg_single_team.jpg")
-    center center / cover no-repeat;
+  background: url("assets/images/bg_single_team.webp") center center / cover
+    no-repeat;
   min-height: 220px;
   display: flex;
   align-items: center;
@@ -11,7 +23,7 @@
 .ev-hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(6, 22, 58, 0.55);
+  background: rgba(6, 22, 58, 0.7);
 }
 .ev-hero-content {
   position: relative;
@@ -22,11 +34,16 @@
   max-width: 1200px;
   margin: 0 auto;
 }
+.ev-hero .page-hero-content {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
 .ev-hero-content h1 {
   font-size: clamp(1.8rem, 4vw, 2.8rem);
   font-weight: 700;
   color: #fff;
   margin-bottom: 12px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* SEARCH */
@@ -76,6 +93,12 @@
 .ev-input-wrap input::placeholder {
   color: rgba(255, 255, 255, 0.4);
 }
+
+/* Ensure native date picker icon is visible on dark background */
+.ev-input-wrap input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
 .ev-input-wrap select option {
   background: #1b2a4a;
   color: #fff;
@@ -124,8 +147,41 @@
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
   position: relative;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
+
+.ev-main-inner .ev-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.ev-main-inner .ev-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.ev-main-inner .ev-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.ev-main-inner .ev-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.ev-main-inner .ev-card:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.ev-main-inner .ev-card:nth-child(6) {
+  animation-delay: 0.6s;
+}
+.ev-main-inner .ev-card:nth-child(7) {
+  animation-delay: 0.7s;
+}
+.ev-main-inner .ev-card:nth-child(8) {
+  animation-delay: 0.8s;
+}
+.ev-main-inner .ev-card:nth-child(9) {
+  animation-delay: 0.9s;
+}
+
 .ev-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 32px rgba(0, 0, 0, 0.12);
@@ -142,6 +198,14 @@
   padding: 8px 12px;
   z-index: 2;
   min-width: 54px;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.ev-card:hover .ev-date-badge {
+  background-color: #1b2a4a;
+  transform: scale(1.15) rotate(-8deg);
 }
 .ev-day {
   display: block;

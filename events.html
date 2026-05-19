@@ -19,7 +19,7 @@
     <div id="site-header"></div>
 
     <!-- PAGE HERO -->
-    <section class="page-hero">
+    <section class="page-hero ev-hero">
       <div class="page-hero-overlay"></div>
       <div class="page-hero-content">
         <h1>Events</h1>
@@ -36,25 +36,25 @@
     <!-- SEARCH FORM -->
     <section class="ev-search">
       <div class="ev-search-inner">
-        <form class="ev-search-form" onsubmit="return false;">
+        <form id="evSearchForm" class="ev-search-form" onsubmit="return false;">
           <div class="ev-search-field">
             <label>From</label>
             <div class="ev-input-wrap">
-              <input type="text" placeholder="Choose Date" />
+              <input type="date" id="evDateFrom" />
               <i class="bi bi-calendar3"></i>
             </div>
           </div>
           <div class="ev-search-field">
             <label>To</label>
             <div class="ev-input-wrap">
-              <input type="text" placeholder="Choose Date" />
+              <input type="date" id="evDateTo" />
               <i class="bi bi-calendar3"></i>
             </div>
           </div>
           <div class="ev-search-field">
             <label>Event Type</label>
             <div class="ev-input-wrap">
-              <select>
+              <select id="evTypeSelect">
                 <option value="">All Event Type</option>
                 <option>Conference</option>
                 <option>Entertainment</option>

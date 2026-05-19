@@ -2,9 +2,6 @@
 (function () {
   const preloader = document.getElementById("preloader");
   if (preloader) {
-    // Use a fixed timeout from the moment the script initializes
-    // to ensure user sees the "attractive" UI for 3 seconds.
-    // This also ensures that if the page loads very quickly, the user still sees the preloader briefly.
     window.addEventListener("load", () => {
       setTimeout(() => {
         preloader.classList.add("fade-out");
@@ -130,6 +127,118 @@
     timer = setInterval(slide, 3000);
   });
   let timer = setInterval(slide, 3000);
+})();
+
+// Blog Pagination Logic
+(function () {
+  const grid = document.querySelector(".ova-wrap-grid");
+  const paginationUl = document.querySelector(".blog_pagination .pagination");
+  if (!grid || !paginationUl) return;
+
+  const articles = grid.querySelectorAll("article");
+  const itemsPerPage = 6;
+  let currentPage = 1;
+  const totalPages = Math.ceil(articles.length / itemsPerPage);
+
+  function showPage(page) {
+    if (page < 1 || page > totalPages) return;
+    currentPage = page;
+
+    const start = (page - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+
+    articles.forEach((article, index) => {
+      if (index >= start && index < end) {
+        article.style.display = "block";
+        article.style.animation = "none";
+        article.offsetHeight;
+        article.style.animation = "";
+      } else {
+        article.style.display = "none";
+      }
+    });
+
+    updatePaginationUI();
+  }
+
+  function updatePaginationUI() {
+    const lis = paginationUl.querySelectorAll("li");
+    lis.forEach((li) => {
+      li.classList.remove("active");
+      const a = li.querySelector("a");
+      if (a && a.textContent == currentPage) {
+        li.classList.add("active");
+      }
+    });
+  }
+
+  paginationUl.addEventListener("click", (e) => {
+    const a = e.target.closest("a");
+    if (!a) return;
+    e.preventDefault();
+
+    const li = a.parentElement;
+    if (li.classList.contains("next")) {
+      showPage(currentPage + 1);
+    } else {
+      const pageNum = parseInt(a.textContent);
+      if (!isNaN(pageNum)) {
+        showPage(pageNum);
+      }
+    }
+  });
+
+  showPage(1);
+})();
+
+// Events Filter Logic
+(function () {
+  const form = document.getElementById("evSearchForm");
+  const typeSelect = document.getElementById("evTypeSelect");
+  const dateFromInput = document.getElementById("evDateFrom");
+  const dateToInput = document.getElementById("evDateTo");
+  const cards = document.querySelectorAll(".ev-card");
+
+  if (!form || !typeSelect || !cards.length) return;
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const filterType = typeSelect.value.toLowerCase();
+
+    // Parse input dates as local midnight
+    const fromDate = dateFromInput.value
+      ? new Date(dateFromInput.value + "T00:00:00")
+      : null;
+    const toDate = dateToInput.value
+      ? new Date(dateToInput.value + "T00:00:00")
+      : null;
+
+    cards.forEach((card) => {
+      const category = card.querySelector(".ev-cat").textContent.toLowerCase();
+
+      // Parse card date as local midnight
+      const day = card.querySelector(".ev-day").textContent.trim();
+      const month = card.querySelector(".ev-month").textContent.trim();
+      const year = card.querySelector(".ev-year").textContent.trim();
+      const cardDate = new Date(`${month} ${day} ${year}`);
+      cardDate.setHours(0, 0, 0, 0);
+
+      const matchesType = filterType === "" || category.includes(filterType);
+      let matchesDate = true;
+
+      if (fromDate && cardDate < fromDate) matchesDate = false;
+      if (toDate && cardDate > toDate) matchesDate = false;
+
+      if (matchesType && matchesDate) {
+        card.style.display = "block";
+        card.style.animation = "none";
+        card.offsetHeight;
+        card.style.animation = "";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  });
 })();
 
 // Hero Slider
