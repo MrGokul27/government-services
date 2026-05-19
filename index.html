@@ -16,17 +16,50 @@
   </head>
   <body class="home-page">
     <div id="preloader">
-      <div class="loader-content">
-        <div class="loader-visual-wrap">
-          <div class="loader-ring"></div>
-          <img
-            src="assets/images/logoStackly.webp"
-            alt="Loading..."
-            class="loader-logo"
-          />
+      <!-- Animated background particles -->
+      <div class="ldr-particles">
+        <span></span><span></span><span></span><span></span> <span></span
+        ><span></span><span></span><span></span>
+      </div>
+      <!-- Diagonal split overlay -->
+      <div class="ldr-split ldr-split-left"></div>
+      <div class="ldr-split ldr-split-right"></div>
+      <!-- Main content -->
+      <div class="ldr-body">
+        <!-- Rings -->
+        <div class="ldr-rings">
+          <div class="ldr-ring ldr-ring-1"></div>
+          <div class="ldr-ring ldr-ring-2"></div>
+          <div class="ldr-ring ldr-ring-3"></div>
+          <div class="ldr-logo-wrap">
+            <img
+              src="assets/images/logoStackly.webp"
+              alt="EGovt"
+              class="ldr-logo"
+            />
+          </div>
         </div>
-        <div class="loader-line"></div>
-        <span class="loader-status">Municipal Data Syncing</span>
+        <!-- City name -->
+        <div class="ldr-title">
+          <span class="ldr-title-city">E<span>GOVT</span></span>
+          <span class="ldr-title-tag">City Government Portal</span>
+        </div>
+        <!-- Progress bar -->
+        <div class="ldr-bar-wrap">
+          <div class="ldr-bar-track">
+            <div class="ldr-bar-fill" id="ldrBarFill"></div>
+          </div>
+          <div class="ldr-bar-labels">
+            <span class="ldr-bar-status" id="ldrStatus">Initializing...</span>
+            <span class="ldr-bar-pct" id="ldrPct">0%</span>
+          </div>
+        </div>
+        <!-- Decorative dots -->
+        <div class="ldr-dots">
+          <span class="ldr-dot"></span>
+          <span class="ldr-dot"></span>
+          <span class="ldr-dot"></span>
+        </div>
       </div>
     </div>
     <div id="site-header"></div>
@@ -95,28 +128,40 @@
     <section class="ova-features">
       <div class="ova-features-inner">
         <div class="ova-feature-box feature-business">
-          <div class="ova-feature-icon"><i class="bi bi-briefcase"></i></div>
+          <span class="fbox-num">01</span>
+          <div class="ova-feature-icon">
+            <div class="fbox-icon-bg"><i class="bi bi-briefcase"></i></div>
+          </div>
           <h3 class="ova-feature-title">For Business</h3>
+          <div class="fbox-line"></div>
           <p class="ova-feature-excerpt">
             This present moment is perfect simply due to the fact you're
             experiencing it. you can get away.
           </p>
           <div class="ova-feature-readmore"><a href="#">More Details</a></div>
         </div>
+
         <div class="ova-feature-box feature-visitors">
-          <div class="ova-feature-icon"><i class="bi bi-balloon"></i></div>
+          <span class="fbox-num">02</span>
+          <div class="ova-feature-icon">
+            <div class="fbox-icon-bg"><i class="bi bi-balloon"></i></div>
+          </div>
           <h3 class="ova-feature-title">For Visitors</h3>
+          <div class="fbox-line"></div>
           <p class="ova-feature-excerpt">
             On top of our attention to Politician and service is a commitment to
             excellence all qualities admire.
           </p>
           <div class="ova-feature-readmore"><a href="#">More Details</a></div>
         </div>
+
         <div class="ova-feature-box feature-residents">
+          <span class="fbox-num">03</span>
           <div class="ova-feature-icon">
-            <i class="bi bi-person-walking"></i>
+            <div class="fbox-icon-bg"><i class="bi bi-person-walking"></i></div>
           </div>
           <h3 class="ova-feature-title">For Residents</h3>
+          <div class="fbox-line"></div>
           <p class="ova-feature-excerpt">
             In care winshape camps launched life-changing summers with our very
             first overnight camp.

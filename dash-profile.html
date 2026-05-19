@@ -5,22 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Profile Settings – Town of EGovt</title>
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="dashboard.css" />
   </head>
   <body>
     <div class="dash-wrapper">
       <aside class="dash-sidebar">
         <div class="dash-sidebar-header">
-          <img src="assets/images/logoStackly.webp" width="140" alt="Logo" />
+          <img src="assets/images/logoStackly.webp" alt="EGovt" />
         </div>
+        <div class="dash-nav-label">Main Menu</div>
         <ul class="dash-nav" id="dashSidebarNav">
           <li data-roles="citizen,staff,admin">
             <a href="dashboard.html"
@@ -52,9 +48,10 @@
               ><i class="bi bi-gear"></i> System Settings</a
             >
           </li>
+          <div class="dash-nav-label">Account</div>
           <li data-roles="citizen,staff,admin">
-            <a href="dash-profile.html"
-              ><i class="bi bi-person"></i> Profile Settings</a
+            <a href="dash-profile.html" class="active"
+              ><i class="bi bi-person-circle"></i> Profile Settings</a
             >
           </li>
           <li data-roles="citizen,staff,admin" class="logout-item">
@@ -63,70 +60,188 @@
             >
           </li>
         </ul>
+        <div class="dash-sidebar-footer">EGovt Portal v2.0</div>
       </aside>
       <main class="dash-main">
-        <button
-          class="dash-sidebar-toggle"
-          id="dashSidebarToggle"
-          aria-label="Toggle sidebar"
-        >
-          <i class="bi bi-list"></i>
-        </button>
         <div class="dash-topbar">
-          <div class="dash-welcome">
-            <h1 id="welcomeMessage">Profile Settings</h1>
-            <p class="text-secondary small">
-              Update your personal account information
-            </p>
+          <div style="display: flex; align-items: center; gap: 14px">
+            <button class="dash-sidebar-toggle" id="dashSidebarToggle">
+              <i class="bi bi-list"></i>
+            </button>
+            <div class="dash-welcome">
+              <h1>Profile Settings</h1>
+              <p>Update your personal account information</p>
+            </div>
           </div>
-          <div class="dash-user-pill">
-            <i class="bi bi-bell text-crimson"></i>
-            <div class="vr"></div>
-            <span class="fw-bold small" id="userPillName">User</span>
-            <img src="" width="32" class="rounded-circle" id="userPillAvatar" />
+          <div class="dash-topbar-right">
+            <button class="dash-notif-btn">
+              <i class="bi bi-bell"></i><span class="dash-notif-badge"></span>
+            </button>
+            <div class="dash-user-pill">
+              <img
+                src="https://ui-avatars.com/api/?name=User&background=c8102e&color=fff"
+                id="userPillAvatar"
+                alt="avatar"
+              />
+              <div class="dash-user-pill-info">
+                <span class="dash-user-pill-name" id="userPillName">User</span>
+                <span class="dash-user-pill-role" id="userPillRole"
+                  >Citizen</span
+                >
+              </div>
+            </div>
           </div>
         </div>
-        <div class="dash-card">
-          <form class="row g-3">
-            <div class="col-md-6">
-              <label class="form-label fw-bold">First Name</label>
-              <input type="text" class="form-control" value="John" />
-            </div>
-            <div class="col-md-6">
-              <label class="form-label fw-bold">Last Name</label>
-              <input type="text" class="form-control" value="Citizen" />
-            </div>
-            <div class="col-md-6">
-              <label class="form-label fw-bold">Email Address</label>
-              <input
-                type="email"
-                class="form-control"
-                id="profileEmail"
-                readonly
+        <div class="dash-body">
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 240px 1fr;
+              gap: 24px;
+              align-items: start;
+            "
+            class="dash-content-row"
+          >
+            <!-- Avatar card -->
+            <div class="dash-card" style="text-align: center">
+              <img
+                id="profileAvatarImg"
+                src="https://ui-avatars.com/api/?name=User&background=c8102e&color=fff&size=120"
+                alt="avatar"
+                style="
+                  width: 100px;
+                  height: 100px;
+                  border-radius: 50%;
+                  border: 4px solid #c8102e;
+                  margin-bottom: 14px;
+                  object-fit: cover;
+                "
               />
-            </div>
-            <div class="col-md-6">
-              <label class="form-label fw-bold">Phone Number</label>
-              <input
-                type="tel"
-                class="form-control"
-                value="+1 (555) 123-4567"
-              />
-            </div>
-            <div class="col-12 mt-4 text-end">
-              <button type="submit" class="auth-btn w-auto px-5 m-0">
-                Save Changes
+              <div
+                style="font-size: 1rem; font-weight: 700; color: #1b2a4a"
+                id="profileDisplayName"
+              >
+                John Citizen
+              </div>
+              <div
+                style="font-size: 0.78rem; color: #9aaac0; margin-bottom: 16px"
+                id="profileDisplayRole"
+              >
+                Citizen
+              </div>
+              <button
+                class="auth-btn"
+                style="width: 100%; padding: 10px; font-size: 0.8rem"
+              >
+                <i class="bi bi-camera"></i> Change Photo
               </button>
             </div>
-          </form>
+
+            <!-- Form card -->
+            <div class="dash-card">
+              <h2><i class="bi bi-person-gear"></i> Personal Information</h2>
+              <form>
+                <div
+                  style="
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                    gap: 18px;
+                    margin-bottom: 20px;
+                  "
+                >
+                  <div>
+                    <label class="form-label">First Name</label>
+                    <input type="text" class="form-control" value="John" />
+                  </div>
+                  <div>
+                    <label class="form-label">Last Name</label>
+                    <input type="text" class="form-control" value="Citizen" />
+                  </div>
+                  <div>
+                    <label class="form-label">Email Address</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="profileEmail"
+                      readonly
+                      style="background: #f0f2f7; cursor: not-allowed"
+                    />
+                  </div>
+                  <div>
+                    <label class="form-label">Phone Number</label>
+                    <input
+                      type="tel"
+                      class="form-control"
+                      value="+1 (555) 123-4567"
+                    />
+                  </div>
+                </div>
+
+                <div class="dash-section-title" style="margin-top: 8px">
+                  Change Password
+                </div>
+                <div
+                  style="
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                    gap: 18px;
+                    margin-bottom: 24px;
+                  "
+                >
+                  <div>
+                    <label class="form-label">Current Password</label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      placeholder="••••••••"
+                    />
+                  </div>
+                  <div>
+                    <label class="form-label">New Password</label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      placeholder="••••••••"
+                    />
+                  </div>
+                  <div>
+                    <label class="form-label">Confirm New Password</label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      placeholder="••••••••"
+                    />
+                  </div>
+                </div>
+
+                <div style="display: flex; justify-content: flex-end">
+                  <button
+                    type="submit"
+                    class="auth-btn"
+                    style="padding: 12px 36px"
+                  >
+                    Save Changes
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
       </main>
     </div>
     <div class="dash-overlay" id="dashOverlay"></div>
     <script src="dashboard.js"></script>
     <script>
-      document.getElementById("profileEmail").value =
+      const email =
         sessionStorage.getItem("loggedInUserEmail") || "user@example.com";
+      const role = sessionStorage.getItem("loggedInUserRole") || "citizen";
+      const name = email.split("@")[0];
+      document.getElementById("profileEmail").value = email;
+      document.getElementById("profileDisplayName").textContent = name;
+      document.getElementById("profileDisplayRole").textContent =
+        role.charAt(0).toUpperCase() + role.slice(1);
+      document.getElementById("profileAvatarImg").src =
+        `https://ui-avatars.com/api/?name=${name}&background=c8102e&color=fff&size=120`;
     </script>
   </body>
 </html>

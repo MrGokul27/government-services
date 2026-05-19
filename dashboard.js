@@ -3,58 +3,66 @@ document.addEventListener("DOMContentLoaded", () => {
   const email =
     sessionStorage.getItem("loggedInUserEmail") || "user@example.com";
   const username = email.split("@")[0];
+  const roleLabel = role.charAt(0).toUpperCase() + role.slice(1);
 
-  // Update Profile UI
+  // Topbar welcome
   const welcomeMsg = document.getElementById("welcomeMessage");
   const memberId = document.getElementById("memberId");
-  const pillName = document.getElementById("userPillName");
-  const pillAvatar = document.getElementById("userPillAvatar");
+  if (welcomeMsg && welcomeMsg.textContent.includes("Welcome")) {
+    welcomeMsg.textContent = `Welcome back, ${username}`;
+  }
+  if (memberId && memberId.textContent.includes("Role:")) {
+    memberId.textContent = `Role: ${roleLabel}`;
+  }
 
-  if (welcomeMsg) welcomeMsg.innerText = `Welcome back, ${username}`;
-  if (memberId)
-    memberId.innerText = `Role: ${role.charAt(0).toUpperCase() + role.slice(1)}`;
-  if (pillName) pillName.innerText = username;
+  // User pill
+  const pillName = document.getElementById("userPillName");
+  const pillRole = document.getElementById("userPillRole");
+  const pillAvatar = document.getElementById("userPillAvatar");
+  if (pillName) pillName.textContent = username;
+  if (pillRole) pillRole.textContent = roleLabel;
   if (pillAvatar)
     pillAvatar.src = `https://ui-avatars.com/api/?name=${username}&background=c8102e&color=fff`;
 
-  // Mobile Sidebar Toggle
-  const dashSidebar = document.querySelector(".dash-sidebar");
-  const dashSidebarToggle = document.getElementById("dashSidebarToggle");
-  const dashOverlay = document.getElementById("dashOverlay");
+  // Mobile sidebar toggle
+  const sidebar = document.querySelector(".dash-sidebar");
+  const toggle = document.getElementById("dashSidebarToggle");
+  const overlay = document.getElementById("dashOverlay");
 
-  if (dashSidebarToggle && dashSidebar && dashOverlay) {
-    dashSidebarToggle.addEventListener("click", () => {
-      dashSidebar.classList.toggle("open");
-      dashOverlay.classList.toggle("open");
-    });
-
-    dashOverlay.addEventListener("click", () => {
-      dashSidebar.classList.remove("open");
-      dashOverlay.classList.remove("open");
-    });
+  function openSidebar() {
+    sidebar.classList.add("open");
+    overlay.classList.add("open");
+  }
+  function closeSidebar() {
+    sidebar.classList.remove("open");
+    overlay.classList.remove("open");
   }
 
-  // Role Filtering (Sidebar and Page Content)
+  if (toggle)
+    toggle.addEventListener("click", () =>
+      sidebar.classList.contains("open") ? closeSidebar() : openSidebar(),
+    );
+  if (overlay) overlay.addEventListener("click", closeSidebar);
+
+  // Close sidebar on nav link click (mobile)
+  document.querySelectorAll(".dash-nav a").forEach((a) => {
+    a.addEventListener("click", () => {
+      if (window.innerWidth <= 900) closeSidebar();
+    });
+  });
+
+  // Role filtering
   document.querySelectorAll("[data-roles]").forEach((el) => {
-    const allowedRoles = el.getAttribute("data-roles");
-    // Admin sees everything. Other roles are filtered by their data-roles attribute.
-    if (
-      role !== "admin" &&
-      allowedRoles &&
-      !allowedRoles.split(",").includes(role)
-    ) {
+    const allowed = el.getAttribute("data-roles").split(",");
+    if (role !== "admin" && !allowed.includes(role)) {
       el.style.display = "none";
     }
   });
 
-  // Active Link Highlighting
-  const currentPath =
+  // Active link
+  const currentPage =
     window.location.pathname.split("/").pop() || "dashboard.html";
   document.querySelectorAll(".dash-nav a").forEach((a) => {
-    if (a.getAttribute("href") === currentPath) {
-      a.classList.add("active");
-    } else {
-      a.classList.remove("active");
-    }
+    a.classList.toggle("active", a.getAttribute("href") === currentPage);
   });
 });

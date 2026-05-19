@@ -5,23 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>System Settings – Town of EGovt</title>
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="dashboard.css" />
   </head>
   <body>
     <div class="dash-wrapper">
-      <!-- SIDEBAR -->
       <aside class="dash-sidebar">
         <div class="dash-sidebar-header">
-          <img src="assets/images/logoStackly.webp" width="140" alt="Logo" />
+          <img src="assets/images/logoStackly.webp" alt="EGovt" />
         </div>
+        <div class="dash-nav-label">Main Menu</div>
         <ul class="dash-nav" id="dashSidebarNav">
           <li data-roles="citizen,staff,admin">
             <a href="dashboard.html"
@@ -49,13 +44,14 @@
             >
           </li>
           <li data-roles="admin">
-            <a href="dash-settings.html"
+            <a href="dash-settings.html" class="active"
               ><i class="bi bi-gear"></i> System Settings</a
             >
           </li>
+          <div class="dash-nav-label">Account</div>
           <li data-roles="citizen,staff,admin">
             <a href="dash-profile.html"
-              ><i class="bi bi-person"></i> Profile Settings</a
+              ><i class="bi bi-person-circle"></i> Profile Settings</a
             >
           </li>
           <li data-roles="citizen,staff,admin" class="logout-item">
@@ -64,104 +60,196 @@
             >
           </li>
         </ul>
+        <div class="dash-sidebar-footer">EGovt Portal v2.0</div>
       </aside>
-
-      <!-- MAIN CONTENT -->
       <main class="dash-main">
-        <button
-          class="dash-sidebar-toggle"
-          id="dashSidebarToggle"
-          aria-label="Toggle sidebar"
-        >
-          <i class="bi bi-list"></i>
-        </button>
         <div class="dash-topbar">
-          <div class="dash-welcome">
-            <h1 id="welcomeMessage">System Settings</h1>
-            <p class="text-secondary small" id="memberId">
-              Global Portal Configuration
-            </p>
+          <div style="display: flex; align-items: center; gap: 14px">
+            <button class="dash-sidebar-toggle" id="dashSidebarToggle">
+              <i class="bi bi-list"></i>
+            </button>
+            <div class="dash-welcome">
+              <h1>System Settings</h1>
+              <p>Global Portal Configuration</p>
+            </div>
           </div>
-          <div class="dash-user-pill">
-            <i class="bi bi-bell text-crimson"></i>
-            <div class="vr"></div>
-            <span class="fw-bold small" id="userPillName">Admin</span>
-            <img src="" width="32" class="rounded-circle" id="userPillAvatar" />
+          <div class="dash-topbar-right">
+            <button class="dash-notif-btn">
+              <i class="bi bi-bell"></i><span class="dash-notif-badge"></span>
+            </button>
+            <div class="dash-user-pill">
+              <img
+                src="https://ui-avatars.com/api/?name=Admin&background=c8102e&color=fff"
+                id="userPillAvatar"
+                alt="avatar"
+              />
+              <div class="dash-user-pill-info">
+                <span class="dash-user-pill-name" id="userPillName">Admin</span>
+                <span class="dash-user-pill-role" id="userPillRole"
+                  >Administrator</span
+                >
+              </div>
+            </div>
           </div>
         </div>
+        <div class="dash-body">
+          <div class="dash-card">
+            <h2><i class="bi bi-gear"></i> System Settings</h2>
+            <form>
+              <div class="dash-section-title">General Configuration</div>
+              <div
+                style="
+                  display: grid;
+                  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+                  gap: 20px;
+                  margin-bottom: 28px;
+                "
+              >
+                <div>
+                  <label class="form-label">Municipal Portal Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="Town of EGovt Municipal Portal"
+                  />
+                </div>
+                <div>
+                  <label class="form-label">System Notification Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    value="noreply@city.gov"
+                  />
+                </div>
+                <div>
+                  <label class="form-label"
+                    >Session Auto-Timeout (Minutes)</label
+                  >
+                  <input type="number" class="form-control" value="30" />
+                </div>
+              </div>
 
-        <div class="dash-card">
-          <form class="row g-4">
-            <div class="col-12">
-              <h5 class="border-bottom pb-2 mb-3">General Configuration</h5>
-            </div>
-            <div class="col-md-6">
-              <label class="form-label fw-bold">Municipal Portal Name</label>
-              <input
-                type="text"
-                class="form-control"
-                value="Town of EGovt Municipal Portal"
-              />
-            </div>
-            <div class="col-md-6">
-              <label class="form-label fw-bold"
-                >System Notification Email</label
+              <div class="dash-section-title">Security & Access Control</div>
+              <div
+                style="
+                  display: grid;
+                  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+                  gap: 20px;
+                  margin-bottom: 28px;
+                "
               >
-              <input
-                type="email"
-                class="form-control"
-                value="noreply@city.gov"
-              />
-            </div>
-            <div class="col-12 mt-4">
-              <h5 class="border-bottom pb-2 mb-3">Security & Access Control</h5>
-            </div>
-            <div class="col-md-6">
-              <div class="form-check form-switch">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="maintenanceMode"
-                />
-                <label class="form-check-label fw-bold" for="maintenanceMode"
-                  >Maintenance Mode</label
+                <div
+                  style="
+                    background: #f7f8fc;
+                    border-radius: 10px;
+                    padding: 18px;
+                    border: 1.5px solid #e8ecf4;
+                  "
                 >
-              </div>
-              <p class="small text-muted">
-                Restrict citizen access during scheduled system updates.
-              </p>
-            </div>
-            <div class="col-md-6">
-              <div class="form-check form-switch">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="newRegs"
-                  checked
-                />
-                <label class="form-check-label fw-bold" for="newRegs"
-                  >Public Citizen Registration</label
+                  <div
+                    style="
+                      display: flex;
+                      align-items: center;
+                      justify-content: space-between;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    <label class="form-label" style="margin: 0"
+                      >Maintenance Mode</label
+                    >
+                    <label
+                      style="
+                        position: relative;
+                        display: inline-block;
+                        width: 44px;
+                        height: 24px;
+                        cursor: pointer;
+                      "
+                    >
+                      <input
+                        type="checkbox"
+                        style="opacity: 0; width: 0; height: 0"
+                      />
+                      <span
+                        style="
+                          position: absolute;
+                          inset: 0;
+                          background: #e8ecf4;
+                          border-radius: 24px;
+                          transition: 0.3s;
+                        "
+                      ></span>
+                    </label>
+                  </div>
+                  <p style="font-size: 0.78rem; color: #9aaac0; margin: 0">
+                    Restrict citizen access during scheduled updates.
+                  </p>
+                </div>
+                <div
+                  style="
+                    background: #f7f8fc;
+                    border-radius: 10px;
+                    padding: 18px;
+                    border: 1.5px solid #e8ecf4;
+                  "
                 >
+                  <div
+                    style="
+                      display: flex;
+                      align-items: center;
+                      justify-content: space-between;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    <label class="form-label" style="margin: 0"
+                      >Public Registration</label
+                    >
+                    <label
+                      style="
+                        position: relative;
+                        display: inline-block;
+                        width: 44px;
+                        height: 24px;
+                        cursor: pointer;
+                      "
+                    >
+                      <input
+                        type="checkbox"
+                        checked
+                        style="opacity: 0; width: 0; height: 0"
+                      />
+                      <span
+                        style="
+                          position: absolute;
+                          inset: 0;
+                          background: #c8102e;
+                          border-radius: 24px;
+                          transition: 0.3s;
+                        "
+                      ></span>
+                    </label>
+                  </div>
+                  <p style="font-size: 0.78rem; color: #9aaac0; margin: 0">
+                    Allow new citizens to create portal accounts.
+                  </p>
+                </div>
               </div>
-              <p class="small text-muted">
-                Toggle whether new citizens can create accounts on the portal.
-              </p>
-            </div>
-            <div class="col-md-6">
-              <label class="form-label fw-bold"
-                >Session Auto-Timeout (Minutes)</label
-              >
-              <input type="number" class="form-control" value="30" />
-            </div>
-            <div class="col-12 mt-4 text-end">
-              <button type="submit" class="auth-btn w-auto px-5 m-0">
-                Save Global Settings
-              </button>
-            </div>
-          </form>
+
+              <div style="display: flex; justify-content: flex-end">
+                <button
+                  type="submit"
+                  class="auth-btn"
+                  style="padding: 12px 36px"
+                >
+                  Save Settings
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </main>
     </div>
+    <div class="dash-overlay" id="dashOverlay"></div>
     <script src="dashboard.js"></script>
   </body>
 </html>

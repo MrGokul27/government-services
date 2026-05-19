@@ -1,218 +1,631 @@
-body {
-  padding-top: 0 !important;
-}
-
-/* ----- Full Screen Error Wrapper ----- */
-.error-page-wrapper {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #06163a;
-  background: radial-gradient(circle at center, #1b2a4a 0%, #06163a 100%);
-  color: #ffffff;
-  padding: 40px 20px;
-  overflow: hidden;
-}
-
-/* ----- Background Decoration ----- */
-.error-bg-decoration {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.shape {
-  position: absolute;
-  border-radius: 50%;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.05) 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  filter: blur(1px);
-  animation: float 20s infinite ease-in-out;
-}
-
-.shape-1 {
-  width: 300px;
-  height: 300px;
-  top: -100px;
-  left: -50px;
-  animation-delay: 0s;
-}
-
-.shape-2 {
-  width: 200px;
-  height: 200px;
-  bottom: 10%;
-  right: 5%;
-  background: linear-gradient(
-    135deg,
-    rgba(200, 16, 46, 0.05) 0%,
-    rgba(200, 16, 46, 0) 100%
-  );
-  animation-delay: -5s;
-}
-
-.shape-3 {
-  width: 150px;
-  height: 150px;
-  top: 20%;
-  right: 15%;
-  animation-delay: -10s;
-  animation-duration: 25s;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-  33% {
-    transform: translate(30px, 50px) rotate(10deg);
-  }
-  66% {
-    transform: translate(-20px, 20px) rotate(-10deg);
-  }
-}
-
-.error-inner-content {
-  max-width: 650px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
-}
-
-.error-visual {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-  animation: fadeInUp 0.8s ease-out forwards;
-}
-
-.error-code {
-  font-size: clamp(120px, 20vw, 220px);
-  font-weight: 900;
-  color: rgba(255, 255, 255, 0.05);
-  background: linear-gradient(to bottom, #ffffff 30%, rgba(255, 255, 255, 0.1));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  line-height: 1;
-  margin: 0;
-  letter-spacing: -10px;
-  z-index: 1;
-}
-
-.error-circle {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  background: rgba(200, 16, 46, 0.1);
-  filter: blur(80px);
-  border-radius: 50%;
-  z-index: 0;
-}
-
-.error-glow {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(
-    circle,
-    rgba(0, 103, 218, 0.15) 0%,
-    transparent 70%
-  );
-  z-index: 0;
-  animation: pulse 4s infinite ease-in-out;
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.5;
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 1;
-  }
-}
-
-.error-title {
-  font-size: clamp(28px, 5vw, 48px);
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 15px;
-  opacity: 0;
-  animation: fadeInUp 0.8s ease-out 0.2s forwards;
-}
-
-.error-message {
-  font-size: 1.1rem;
-  color: #9aaac0;
-  margin-bottom: 40px;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-  opacity: 0;
-  animation: fadeInUp 0.8s ease-out 0.4s forwards;
-}
-
-@keyframes fadeInUp {
+/* --- Keyframes --- */
+@keyframes e4FadeUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(40px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+@keyframes e4FadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes e4ScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes e4Pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.18);
+    opacity: 1;
+  }
+}
+@keyframes e4Spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes e4SpinRev {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+@keyframes e4Scanline {
+  0% {
+    top: -8%;
+  }
+  100% {
+    top: 108%;
+  }
+}
+@keyframes e4Particle {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-100vh) scale(0);
+    opacity: 0;
+  }
+}
+@keyframes e4SkySlide {
+  from {
+    transform: translateX(60px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes e4DotBlink {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes e4BadgeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
 
-.error-actions {
+/* Glitch keyframes */
+@keyframes e4GlitchA {
+  0%,
+  100% {
+    clip-path: inset(0 0 100% 0);
+    transform: translate(0);
+  }
+  10% {
+    clip-path: inset(10% 0 60% 0);
+    transform: translate(-4px, 2px);
+  }
+  20% {
+    clip-path: inset(50% 0 20% 0);
+    transform: translate(4px, -2px);
+  }
+  30% {
+    clip-path: inset(30% 0 40% 0);
+    transform: translate(-3px, 1px);
+  }
+  40% {
+    clip-path: inset(70% 0 5% 0);
+    transform: translate(3px, -1px);
+  }
+  50% {
+    clip-path: inset(20% 0 70% 0);
+    transform: translate(-2px, 3px);
+  }
+  60% {
+    clip-path: inset(0 0 100% 0);
+    transform: translate(0);
+  }
+}
+@keyframes e4GlitchB {
+  0%,
+  100% {
+    clip-path: inset(0 0 100% 0);
+    transform: translate(0);
+  }
+  10% {
+    clip-path: inset(60% 0 10% 0);
+    transform: translate(4px, -2px);
+  }
+  25% {
+    clip-path: inset(20% 0 55% 0);
+    transform: translate(-4px, 2px);
+  }
+  40% {
+    clip-path: inset(80% 0 5% 0);
+    transform: translate(3px, -3px);
+  }
+  55% {
+    clip-path: inset(40% 0 30% 0);
+    transform: translate(-3px, 1px);
+  }
+  70% {
+    clip-path: inset(0 0 100% 0);
+    transform: translate(0);
+  }
+}
+
+/* --- Base --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: #06163a;
+  font-family: "Segoe UI", sans-serif;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* --- City Skyline --- */
+.e4-skyline {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 0;
+  animation: e4SkySlide 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+}
+.e4-skyline svg {
+  width: 100%;
+  height: 220px;
+  display: block;
+}
+
+/* --- Scan line --- */
+.e4-scanline {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+.e4-scanline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(200, 16, 46, 0.06),
+    transparent
+  );
+  animation: e4Scanline 5s linear infinite;
+}
+
+/* --- Particles --- */
+.e4-particles {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.e4-particles span {
+  position: absolute;
+  bottom: -10px;
+  border-radius: 50%;
+  animation: e4Particle linear infinite;
+}
+.e4-particles span:nth-child(1) {
+  left: 5%;
+  width: 5px;
+  height: 5px;
+  background: rgba(200, 16, 46, 0.5);
+  animation-duration: 8s;
+  animation-delay: 0s;
+}
+.e4-particles span:nth-child(2) {
+  left: 14%;
+  width: 3px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  animation-duration: 11s;
+  animation-delay: 1s;
+}
+.e4-particles span:nth-child(3) {
+  left: 26%;
+  width: 6px;
+  height: 6px;
+  background: rgba(200, 16, 46, 0.3);
+  animation-duration: 7s;
+  animation-delay: 2s;
+}
+.e4-particles span:nth-child(4) {
+  left: 40%;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  animation-duration: 13s;
+  animation-delay: 0.5s;
+}
+.e4-particles span:nth-child(5) {
+  left: 55%;
+  width: 5px;
+  height: 5px;
+  background: rgba(200, 16, 46, 0.4);
+  animation-duration: 9s;
+  animation-delay: 1.5s;
+}
+.e4-particles span:nth-child(6) {
+  left: 67%;
+  width: 3px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  animation-duration: 10s;
+  animation-delay: 3s;
+}
+.e4-particles span:nth-child(7) {
+  left: 78%;
+  width: 7px;
+  height: 7px;
+  background: rgba(200, 16, 46, 0.25);
+  animation-duration: 12s;
+  animation-delay: 0.8s;
+}
+.e4-particles span:nth-child(8) {
+  left: 88%;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.07);
+  animation-duration: 8s;
+  animation-delay: 2.5s;
+}
+.e4-particles span:nth-child(9) {
+  left: 33%;
+  width: 3px;
+  height: 3px;
+  background: rgba(200, 16, 46, 0.35);
+  animation-duration: 14s;
+  animation-delay: 4s;
+}
+.e4-particles span:nth-child(10) {
+  left: 72%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.06);
+  animation-duration: 9s;
+  animation-delay: 1.2s;
+}
+
+/* --- Main layout --- */
+.e4-main {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  gap: 20px;
+  padding: 30px 20px 30px;
+  text-align: center;
+}
+
+/* --- Top badge --- */
+.e4-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(200, 16, 46, 0.12);
+  border: 1px solid rgba(200, 16, 46, 0.35);
+  color: #c8102e;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 7px 18px;
+  border-radius: 2px;
+  margin-bottom: 12px;
+  animation: e4BadgeIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+}
+.e4-badge i {
+  font-size: 0.85rem;
+}
+
+/* --- Giant 404 glitch --- */
+.e4-code-wrap {
+  position: relative;
+  margin-bottom: 8px;
+  animation: e4FadeIn 0.5s ease 0.4s both;
+}
+.e4-code {
+  display: block;
+  font-size: clamp(100px, 22vw, 140px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  background: linear-gradient(
+    160deg,
+    #ffffff 20%,
+    rgba(255, 255, 255, 0.15) 80%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  user-select: none;
+}
+
+/* Glitch pseudo-layers */
+.e4-code::before,
+.e4-code::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    #ffffff 20%,
+    rgba(255, 255, 255, 0.15) 80%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   opacity: 0;
-  animation: fadeInUp 0.8s ease-out 0.6s forwards;
+}
+.e4-code::before {
+  color: #c8102e;
+  -webkit-text-fill-color: #c8102e;
+  background: none;
+}
+.e4-code::after {
+  color: #00d4ff;
+  -webkit-text-fill-color: #00d4ff;
+  background: none;
 }
 
-.btn-error-home {
-  display: inline-block;
-  padding: 14px 35px;
-  background-color: #0067da;
-  color: #ffffff;
+.e4-code.glitching::before {
+  animation: e4GlitchA 0.3s steps(1) forwards;
+  opacity: 1;
+}
+.e4-code.glitching::after {
+  animation: e4GlitchB 0.3s steps(1) forwards;
+  opacity: 1;
+}
+
+/* Red glow under 404 */
+.e4-code-wrap::after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 60px;
+  background: radial-gradient(
+    ellipse,
+    rgba(200, 16, 46, 0.35) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* --- Animated icon ring --- */
+.e4-icon-wrap {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 14px;
+  animation: e4ScaleIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s both;
+}
+.e4-icon-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: #c8102e;
+  border-right-color: rgba(200, 16, 46, 0.2);
+  animation: e4Spin 2s linear infinite;
+}
+.e4-icon-ring::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom-color: rgba(255, 255, 255, 0.3);
+  animation: e4SpinRev 3s linear infinite;
+}
+.e4-icon {
+  font-size: 1.8rem;
+  color: #fff;
+  position: relative;
+  z-index: 1;
+  animation: e4Pulse 3s ease-in-out infinite;
+}
+
+/* --- Title & subtitle --- */
+.e4-title {
+  font-size: clamp(1.6rem, 4vw, 2.8rem);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 14px;
+  letter-spacing: -0.02em;
+  animation: e4FadeUp 0.7s ease 0.7s both;
+}
+.e4-sub {
+  font-size: clamp(0.9rem, 2vw, 1.05rem);
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.8;
+  max-width: 480px;
+  margin: 0 auto;
+  animation: e4FadeUp 0.7s ease 0.85s both;
+}
+
+/* --- Divider dots --- */
+.e4-divider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 32px auto;
+  animation: e4FadeIn 0.5s ease 1s both;
+}
+.e4-divider span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #c8102e;
+  animation: e4DotBlink 1.4s ease-in-out infinite;
+}
+.e4-divider span:nth-child(2) {
+  animation-delay: 0.2s;
+  background: rgba(255, 255, 255, 0.3);
+}
+.e4-divider span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* --- Quick links grid --- */
+.e4-links {
+  margin-bottom: 36px;
+  animation: e4FadeUp 0.7s ease 1.05s both;
+}
+.e4-links-label {
+  display: block;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.e4-links-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+.e4-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.82rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 2px;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    color 0.2s,
+    transform 0.2s;
+}
+.e4-link i {
+  font-size: 0.85rem;
+  color: #c8102e;
+}
+.e4-link:hover {
+  background: rgba(200, 16, 46, 0.12);
+  border-color: rgba(200, 16, 46, 0.4);
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+/* --- CTA buttons --- */
+.e4-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: e4FadeUp 0.7s ease 1.2s both;
+}
+.e4-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 36px;
+  background: #c8102e;
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 2px;
+  transition:
+    background 0.2s,
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+.e4-btn-primary:hover {
+  background: #a50d26;
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(200, 16, 46, 0.4);
+}
+.e4-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 36px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.92rem;
   font-weight: 600;
   text-decoration: none;
-  border-radius: 50px;
-  transition: all 0.3s ease;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+  transition:
+    border-color 0.2s,
+    color 0.2s,
+    transform 0.2s;
 }
-
-.btn-error-home:hover {
-  background-color: #df193a;
-  color: #ffffff;
+.e4-btn-ghost:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #fff;
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(223, 25, 58, 0.3);
 }
 
-.btn-error-contact {
-  display: inline-block;
-  padding: 14px 35px;
-  background-color: transparent;
-  color: #ffffff;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  font-weight: 600;
-  text-decoration: none;
-  border-radius: 50px;
-  transition: all 0.3s ease;
+/* --- Error code footer --- */
+.e4-errcode {
+  margin-top: 48px;
+  font-size: 0.62rem;
+  color: rgba(255, 255, 255, 0.15);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-family: monospace;
+  animation: e4FadeIn 1s ease 1.4s both;
 }
 
-.btn-error-contact:hover {
-  border-color: #ffffff;
-  background: rgba(255, 255, 255, 0.05);
-  transform: translateY(-3px);
+/* --- Responsive --- */
+@media (max-width: 480px) {
+  .e4-main {
+    padding: 40px 16px 140px;
+  }
+  .e4-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  .e4-btn-primary,
+  .e4-btn-ghost {
+    width: 100%;
+    justify-content: center;
+  }
+  .e4-links-grid {
+    gap: 8px;
+  }
+  .e4-link {
+    font-size: 0.78rem;
+    padding: 8px 14px;
+  }
 }

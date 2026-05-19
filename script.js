@@ -1,40 +1,40 @@
 // Home Page Scroll Animations
 (function () {
-  if (!document.body.classList.contains('home-page')) return;
+  if (!document.body.classList.contains("home-page")) return;
 
   const targets = [
-    '.ova-feature-box',
-    '.ova-welcome-video',
-    '.ova-welcome-content',
-    '.ova-news-header',
-    '.ova-news-card',
-    '.ova-counter-item',
-    '.ova-mayor-img',
-    '.ova-mayor-content',
-    '.ova-dept-header',
-    '.ova-events-header',
-    '.ova-event-card',
-    '.ova-discover-inner',
-    '.ova-team-header',
-    '.ova-team-card',
-    '.ova-partner-logo',
-    '.ova-newsletter-left',
-    '.ova-newsletter-right',
+    ".ova-feature-box",
+    ".ova-welcome-video",
+    ".ova-welcome-content",
+    ".ova-news-header",
+    ".ova-news-card",
+    ".ova-counter-item",
+    ".ova-mayor-img",
+    ".ova-mayor-content",
+    ".ova-dept-header",
+    ".ova-events-header",
+    ".ova-event-card",
+    ".ova-discover-inner",
+    ".ova-team-header",
+    ".ova-team-card",
+    ".ova-partner-logo",
+    ".ova-newsletter-left",
+    ".ova-newsletter-right",
   ];
 
-  const els = document.querySelectorAll(targets.join(','));
+  const els = document.querySelectorAll(targets.join(","));
   if (!els.length) return;
 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('hx-visible');
+          entry.target.classList.add("hx-visible");
           observer.unobserve(entry.target);
         }
       });
     },
-    { threshold: 0.1 }
+    { threshold: 0.1 },
   );
 
   els.forEach((el) => observer.observe(el));
@@ -64,12 +64,47 @@
   const preloader = document.getElementById("preloader");
   if (!preloader) return;
 
-  window.addEventListener("load", () => {
-    setTimeout(() => {
-      preloader.classList.add("fade-out");
-      document.body.classList.add("loader-done");
-    }, 3000);
-  });
+  const fill = document.getElementById("ldrBarFill");
+  const status = document.getElementById("ldrStatus");
+  const pct = document.getElementById("ldrPct");
+
+  const steps = [
+    { at: 10, label: "Connecting to server..." },
+    { at: 28, label: "Loading resources..." },
+    { at: 50, label: "Fetching city data..." },
+    { at: 72, label: "Preparing portal..." },
+    { at: 90, label: "Almost ready..." },
+    { at: 100, label: "Welcome!" },
+  ];
+
+  let current = 0;
+  const totalMs = 2000;
+  const intervalMs = 16;
+  const totalSteps = totalMs / intervalMs;
+  let tick = 0;
+
+  const timer = setInterval(() => {
+    tick++;
+    const progress = Math.min(Math.round((tick / totalSteps) * 100), 100);
+    if (fill) fill.style.width = progress + "%";
+    if (pct) pct.textContent = progress + "%";
+
+    // Update status label at each milestone
+    if (current < steps.length && progress >= steps[current].at) {
+      if (status) status.textContent = steps[current].label;
+      current++;
+    }
+
+    if (progress >= 100) {
+      clearInterval(timer);
+      setTimeout(() => {
+        preloader.classList.add("fade-out");
+        document.body.classList.add("loader-done");
+        // Remove from DOM after transition
+        setTimeout(() => preloader.remove(), 600);
+      }, 200);
+    }
+  }, intervalMs);
 })();
 
 // Departments Slider
@@ -307,7 +342,8 @@
 (function () {
   const slides = document.querySelectorAll(".sr7-slide");
   const dots = document.querySelectorAll(".sr7-dot");
-  let current = 0, timer;
+  let current = 0,
+    timer;
 
   function goTo(n) {
     // Reset content of current slide before leaving
@@ -318,8 +354,16 @@
     dots[current].classList.add("active");
   }
 
-  window.srSlide = (dir) => { clearInterval(timer); goTo(current + dir); startAuto(); };
-  window.srGoTo  = (n)   => { clearInterval(timer); goTo(n);             startAuto(); };
+  window.srSlide = (dir) => {
+    clearInterval(timer);
+    goTo(current + dir);
+    startAuto();
+  };
+  window.srGoTo = (n) => {
+    clearInterval(timer);
+    goTo(n);
+    startAuto();
+  };
 
   function startAuto() {
     timer = setInterval(() => goTo(current + 1), 5000);
