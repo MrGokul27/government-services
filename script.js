@@ -1,3 +1,45 @@
+// Home Page Scroll Animations
+(function () {
+  if (!document.body.classList.contains('home-page')) return;
+
+  const targets = [
+    '.ova-feature-box',
+    '.ova-welcome-video',
+    '.ova-welcome-content',
+    '.ova-news-header',
+    '.ova-news-card',
+    '.ova-counter-item',
+    '.ova-mayor-img',
+    '.ova-mayor-content',
+    '.ova-dept-header',
+    '.ova-events-header',
+    '.ova-event-card',
+    '.ova-discover-inner',
+    '.ova-team-header',
+    '.ova-team-card',
+    '.ova-partner-logo',
+    '.ova-newsletter-left',
+    '.ova-newsletter-right',
+  ];
+
+  const els = document.querySelectorAll(targets.join(','));
+  if (!els.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('hx-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  els.forEach((el) => observer.observe(el));
+})();
+
 // Scroll Reveal Logic
 (function () {
   const reveals = document.querySelectorAll(".reveal");
@@ -20,13 +62,14 @@
 // Preloader logic
 (function () {
   const preloader = document.getElementById("preloader");
-  if (preloader) {
-    window.addEventListener("load", () => {
-      setTimeout(() => {
-        preloader.classList.add("fade-out");
-      }, 3000);
-    });
-  }
+  if (!preloader) return;
+
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      preloader.classList.add("fade-out");
+      document.body.classList.add("loader-done");
+    }, 3000);
+  });
 })();
 
 // Departments Slider
@@ -264,10 +307,10 @@
 (function () {
   const slides = document.querySelectorAll(".sr7-slide");
   const dots = document.querySelectorAll(".sr7-dot");
-  let current = 0,
-    timer;
+  let current = 0, timer;
 
   function goTo(n) {
+    // Reset content of current slide before leaving
     slides[current].classList.remove("active");
     dots[current].classList.remove("active");
     current = (n + slides.length) % slides.length;
@@ -275,16 +318,8 @@
     dots[current].classList.add("active");
   }
 
-  window.srSlide = (dir) => {
-    clearInterval(timer);
-    goTo(current + dir);
-    startAuto();
-  };
-  window.srGoTo = (n) => {
-    clearInterval(timer);
-    goTo(n);
-    startAuto();
-  };
+  window.srSlide = (dir) => { clearInterval(timer); goTo(current + dir); startAuto(); };
+  window.srGoTo  = (n)   => { clearInterval(timer); goTo(n);             startAuto(); };
 
   function startAuto() {
     timer = setInterval(() => goTo(current + 1), 5000);

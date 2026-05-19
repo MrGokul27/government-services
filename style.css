@@ -632,7 +632,6 @@ body {
     box-shadow 0.3s ease,
     border-top 0.3s ease;
   border-top: 3px solid transparent;
-  animation: zoomIn 0.8s ease backwards;
 }
 .ova-feature-box:hover {
   transform: translateY(-15px);
@@ -640,10 +639,48 @@ body {
   border-top-color: #c8102e;
 }
 .ova-feature-icon {
-  font-size: 2rem;
-  color: #c8102e;
-  margin-bottom: 22px;
+  font-size: 1.8rem;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  transition: all 0.3s ease;
 }
+
+/* Feature Card Variations */
+.feature-business .ova-feature-icon {
+  color: #1b2a4a;
+  background: rgba(27, 42, 74, 0.1);
+}
+.feature-business:hover {
+  border-top-color: #1b2a4a;
+}
+
+.feature-visitors .ova-feature-icon {
+  color: #c8102e;
+  background: rgba(200, 16, 46, 0.1);
+}
+.feature-visitors:hover {
+  border-top-color: #c8102e;
+}
+
+.feature-residents .ova-feature-icon {
+  color: #2e7d32;
+  background: rgba(46, 125, 50, 0.1);
+}
+.feature-residents:hover {
+  border-top-color: #2e7d32;
+}
+
+.ova-feature-box:hover .ova-feature-icon {
+  transform: scale(1.1) rotate(5deg);
+  background: #fff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
 .ova-feature-title {
   font-size: 1.25rem;
   font-weight: 700;
@@ -708,12 +745,6 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   align-items: center;
-}
-.ova-welcome-video {
-  animation: fadeInLeft 0.8s ease-out;
-}
-.ova-welcome-content {
-  animation: fadeInRight 0.8s ease-out;
 }
 .ova-welcome-video {
   position: relative;
@@ -799,7 +830,9 @@ body {
 
 /* Newsletter + Footer */
 .ova-newsletter {
-  background: #c8102e;
+  background-image: url("assets/images/home/bg_home-4_1.webp");
+  background-size: cover;
+  background-position: center;
   padding: 40px;
 }
 
@@ -1077,7 +1110,6 @@ body {
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
-  animation: fadeInUp 0.6s ease-out backwards;
 }
 
 .ova-team-card:hover {
@@ -1542,8 +1574,8 @@ body {
   min-height: 520px;
 }
 .ova-mayor-img {
-  background: url("https://demo.ovathemewp.com/egovt/wp-content/uploads/2020/11/city.jpg")
-    center center / cover no-repeat;
+  background: url("assets/images/home/city.webp") center center / cover
+    no-repeat;
 }
 .ova-mayor-content {
   background: #1b2a4a;
@@ -2017,6 +2049,337 @@ body {
   100% {
     left: 100%;
   }
+}
+
+/* ============================================
+   HOME PAGE — SCROLL-TRIGGERED ANIMATIONS
+   ============================================ */
+
+/* --- Keyframes --- */
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.75);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes flipInX {
+  from {
+    opacity: 0;
+    transform: perspective(600px) rotateX(-25deg) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(600px) rotateX(0deg) translateY(0);
+  }
+}
+@keyframes revealLine {
+  from {
+    width: 0;
+  }
+  to {
+    width: 60px;
+  }
+}
+@keyframes countPop {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes floatUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes shimmerSlide {
+  from {
+    transform: translateX(-100%) skewX(-15deg);
+  }
+  to {
+    transform: translateX(250%) skewX(-15deg);
+  }
+}
+
+/* --- Base hidden state for all home scroll elements --- */
+.home-page .ova-feature-box,
+.home-page .ova-welcome-video,
+.home-page .ova-welcome-content,
+.home-page .ova-news-header,
+.home-page .ova-news-card,
+.home-page .ova-counter-item,
+.home-page .ova-mayor-img,
+.home-page .ova-mayor-content,
+.home-page .ova-dept-header,
+.home-page .ova-events-header,
+.home-page .ova-event-card,
+.home-page .ova-discover-inner,
+.home-page .ova-team-header,
+.home-page .ova-team-card,
+.home-page .ova-partner-logo,
+.home-page .ova-newsletter-left,
+.home-page .ova-newsletter-right {
+  opacity: 0;
+}
+
+/* --- Animated state --- */
+
+/* Feature boxes — pop in with stagger */
+.home-page .ova-feature-box.hx-visible {
+  animation: popIn 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+.home-page .ova-features-inner .ova-feature-box:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.home-page .ova-features-inner .ova-feature-box:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.home-page .ova-features-inner .ova-feature-box:nth-child(3) {
+  animation-delay: 0.35s;
+}
+
+/* Welcome — split left/right */
+.home-page .ova-welcome-video.hx-visible {
+  animation: slideInLeft 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.home-page .ova-welcome-content.hx-visible {
+  animation: slideInRight 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
+}
+
+/* News header */
+.home-page .ova-news-header.hx-visible {
+  animation: slideUpFade 0.7s ease-out forwards;
+}
+
+/* News cards — flip in */
+.home-page .ova-news-card.hx-visible {
+  animation: flipInX 0.6s ease-out forwards;
+}
+.home-page .ova-news-track .ova-news-card:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.home-page .ova-news-track .ova-news-card:nth-child(2) {
+  animation-delay: 0.18s;
+}
+.home-page .ova-news-track .ova-news-card:nth-child(3) {
+  animation-delay: 0.31s;
+}
+.home-page .ova-news-track .ova-news-card:nth-child(4) {
+  animation-delay: 0.44s;
+}
+.home-page .ova-news-track .ova-news-card:nth-child(5) {
+  animation-delay: 0.57s;
+}
+.home-page .ova-news-track .ova-news-card:nth-child(6) {
+  animation-delay: 0.7s;
+}
+
+/* Counters — count pop */
+.home-page .ova-counter-item.hx-visible {
+  animation: countPop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+.home-page .ova-counters-inner .ova-counter-item:nth-child(1) {
+  animation-delay: 0s;
+}
+.home-page .ova-counters-inner .ova-counter-item:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.home-page .ova-counters-inner .ova-counter-item:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.home-page .ova-counters-inner .ova-counter-item:nth-child(4) {
+  animation-delay: 0.45s;
+}
+
+/* Mayor — split */
+.home-page .ova-mayor-img.hx-visible {
+  animation: slideInLeft 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.home-page .ova-mayor-content.hx-visible {
+  animation: slideInRight 1s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+}
+
+/* Dept header */
+.home-page .ova-dept-header.hx-visible {
+  animation: slideUpFade 0.7s ease-out forwards;
+}
+
+/* Events header + cards */
+.home-page .ova-events-header.hx-visible {
+  animation: slideUpFade 0.7s ease-out forwards;
+}
+.home-page .ova-event-card.hx-visible {
+  animation: floatUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.home-page .ova-events-grid .ova-event-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.home-page .ova-events-grid .ova-event-card:nth-child(2) {
+  animation-delay: 0.25s;
+}
+.home-page .ova-events-grid .ova-event-card:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* Discover CTA */
+.home-page .ova-discover-inner.hx-visible {
+  animation: popIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Team header + cards */
+.home-page .ova-team-header.hx-visible {
+  animation: slideUpFade 0.7s ease-out forwards;
+}
+.home-page .ova-team-card.hx-visible {
+  animation: floatUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.home-page .ova-team-grid .ova-team-card:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.home-page .ova-team-grid .ova-team-card:nth-child(2) {
+  animation-delay: 0.18s;
+}
+.home-page .ova-team-grid .ova-team-card:nth-child(3) {
+  animation-delay: 0.31s;
+}
+.home-page .ova-team-grid .ova-team-card:nth-child(4) {
+  animation-delay: 0.44s;
+}
+
+/* Partners — pop in */
+.home-page .ova-partner-logo.hx-visible {
+  animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+.home-page .ova-partners-inner .ova-partner-logo:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.home-page .ova-partners-inner .ova-partner-logo:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.home-page .ova-partners-inner .ova-partner-logo:nth-child(3) {
+  animation-delay: 0.25s;
+}
+.home-page .ova-partners-inner .ova-partner-logo:nth-child(4) {
+  animation-delay: 0.35s;
+}
+.home-page .ova-partners-inner .ova-partner-logo:nth-child(5) {
+  animation-delay: 0.45s;
+}
+
+/* Newsletter */
+.home-page .ova-newsletter-left.hx-visible {
+  animation: slideInLeft 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.home-page .ova-newsletter-right.hx-visible {
+  animation: slideInRight 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
+}
+
+/* --- Hero slide content — unique cinematic entrance --- */
+/* Non-active slides: keep content hidden/reset */
+.sr7-slide-content h1 {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: none;
+}
+.sr7-slide-content p {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: none;
+}
+.sr7-slide-content .sr7-btn {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: none;
+}
+/* Active slide after loader: animate in */
+.loader-done .sr7-slide.active .sr7-slide-content h1 {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.8s ease 0.1s,
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s;
+}
+.loader-done .sr7-slide.active .sr7-slide-content p {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.7s ease 0.35s,
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.35s;
+}
+.loader-done .sr7-slide.active .sr7-slide-content .sr7-btn {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.6s ease 0.55s,
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.55s;
+}
+
+/* Shimmer effect on feature box hover */
+.home-page .ova-feature-box {
+  overflow: hidden;
+}
+.home-page .ova-feature-box::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateX(-100%) skewX(-15deg);
+  pointer-events: none;
+}
+.home-page .ova-feature-box:hover::after {
+  animation: shimmerSlide 0.6s ease forwards;
+}
+.home-page .ova-feature-box {
+  position: relative;
 }
 
 /* Stats */
