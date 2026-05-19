@@ -61,7 +61,7 @@
             >
           </li>
         </ul>
-        <div class="dash-sidebar-footer">EGovt Portal v2.0</div>
+        <!-- <div class="dash-sidebar-footer">EGovt Portal v2.0</div> -->
       </aside>
 
       <!-- MAIN -->
@@ -147,7 +147,9 @@
             <!-- Recent Applications -->
             <div class="dash-card">
               <h2><i class="bi bi-clock-history"></i> Recent Applications</h2>
-              <div class="dash-table-responsive">
+
+              <!-- Desktop table -->
+              <div class="dash-table-responsive dash-app-table-wrap">
                 <table class="dash-table">
                   <thead>
                     <tr>
@@ -191,6 +193,40 @@
                   </tbody>
                 </table>
               </div>
+
+              <!-- Mobile application cards -->
+              <div class="dash-app-cards">
+                <div class="dash-app-card">
+                  <div class="dash-app-card-top">
+                    <span class="dash-app-card-id">#APP-992</span>
+                    <span class="status-badge status-approved">Approved</span>
+                  </div>
+                  <div class="dash-app-card-name">Property Tax Assessment</div>
+                  <div class="dash-app-card-date">
+                    <i class="bi bi-calendar3"></i> May 12, 2024
+                  </div>
+                </div>
+                <div class="dash-app-card">
+                  <div class="dash-app-card-top">
+                    <span class="dash-app-card-id">#APP-845</span>
+                    <span class="status-badge status-pending">In Review</span>
+                  </div>
+                  <div class="dash-app-card-name">New Water Connection</div>
+                  <div class="dash-app-card-date">
+                    <i class="bi bi-calendar3"></i> May 15, 2024
+                  </div>
+                </div>
+                <div class="dash-app-card">
+                  <div class="dash-app-card-top">
+                    <span class="dash-app-card-id">#APP-710</span>
+                    <span class="status-badge status-approved">Approved</span>
+                  </div>
+                  <div class="dash-app-card-name">Trade License Renewal</div>
+                  <div class="dash-app-card-date">
+                    <i class="bi bi-calendar3"></i> Apr 28, 2024
+                  </div>
+                </div>
+              </div>
             </div>
 
             <!-- Quick Actions -->
@@ -201,27 +237,18 @@
                   href="dash-applications.html"
                   class="dash-action-btn primary"
                 >
-                  <i class="bi bi-plus-circle"></i> New Request
+                  <i class="bi bi-plus-circle dash-action-icon"></i> New Request
                 </a>
                 <a href="dash-payments.html" class="dash-action-btn">
-                  <i
-                    class="bi bi-receipt"
-                    style="background: rgba(27, 111, 200, 0.1); color: #1b6fc8"
-                  ></i>
-                  Pay Tax Invoice
+                  <i class="bi bi-receipt dash-action-icon icon-blue"></i> Pay
+                  Tax Invoice
                 </a>
                 <a href="dash-issues.html" class="dash-action-btn">
-                  <i
-                    class="bi bi-megaphone"
-                    style="background: rgba(230, 81, 0, 0.1); color: #e65100"
-                  ></i>
+                  <i class="bi bi-megaphone dash-action-icon icon-orange"></i>
                   Report an Issue
                 </a>
                 <a href="dash-profile.html" class="dash-action-btn">
-                  <i
-                    class="bi bi-person-gear"
-                    style="background: rgba(46, 125, 50, 0.1); color: #2e7d32"
-                  ></i>
+                  <i class="bi bi-person-gear dash-action-icon icon-green"></i>
                   Edit Profile
                 </a>
               </div>

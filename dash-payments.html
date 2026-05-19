@@ -93,18 +93,12 @@
           </div>
         </div>
         <div class="dash-body">
-          <div
-            style="
-              display: grid;
-              grid-template-columns: 1fr 300px;
-              gap: 24px;
-              align-items: start;
-            "
-            class="dash-content-row"
-          >
+          <div class="dash-pay-grid">
             <div class="dash-card">
               <h2><i class="bi bi-receipt"></i> Outstanding Invoices</h2>
-              <div class="dash-table-responsive">
+
+              <!-- Desktop table -->
+              <div class="dash-table-responsive pay-table-wrap">
                 <table class="dash-table">
                   <thead>
                     <tr>
@@ -120,32 +114,48 @@
                       <td>#TX-2024-442</td>
                       <td>Property Tax – Q3</td>
                       <td>Nov 15, 2024</td>
-                      <td style="font-weight: 700">$450.00</td>
-                      <td>
-                        <button
-                          class="auth-btn"
-                          style="padding: 6px 14px; font-size: 0.78rem"
-                        >
-                          Pay Now
-                        </button>
-                      </td>
+                      <td class="pay-amount">$450.00</td>
+                      <td><button class="auth-btn pay-btn">Pay Now</button></td>
                     </tr>
                     <tr>
                       <td>#TX-2024-310</td>
                       <td>Water Bill – October</td>
                       <td>Nov 30, 2024</td>
-                      <td style="font-weight: 700">$38.50</td>
-                      <td>
-                        <button
-                          class="auth-btn"
-                          style="padding: 6px 14px; font-size: 0.78rem"
-                        >
-                          Pay Now
-                        </button>
-                      </td>
+                      <td class="pay-amount">$38.50</td>
+                      <td><button class="auth-btn pay-btn">Pay Now</button></td>
                     </tr>
                   </tbody>
                 </table>
+              </div>
+
+              <!-- Mobile invoice cards -->
+              <div class="pay-invoice-cards">
+                <div class="pay-invoice-card">
+                  <div class="pay-invoice-top">
+                    <span class="pay-invoice-id">#TX-2024-442</span>
+                    <span class="pay-invoice-amount">$450.00</span>
+                  </div>
+                  <div class="pay-invoice-desc">Property Tax – Q3</div>
+                  <div class="pay-invoice-bottom">
+                    <span class="pay-invoice-due"
+                      ><i class="bi bi-calendar3"></i> Due Nov 15, 2024</span
+                    >
+                    <button class="auth-btn pay-btn">Pay Now</button>
+                  </div>
+                </div>
+                <div class="pay-invoice-card">
+                  <div class="pay-invoice-top">
+                    <span class="pay-invoice-id">#TX-2024-310</span>
+                    <span class="pay-invoice-amount">$38.50</span>
+                  </div>
+                  <div class="pay-invoice-desc">Water Bill – October</div>
+                  <div class="pay-invoice-bottom">
+                    <span class="pay-invoice-due"
+                      ><i class="bi bi-calendar3"></i> Due Nov 30, 2024</span
+                    >
+                    <button class="auth-btn pay-btn">Pay Now</button>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -163,12 +173,7 @@
               <div class="pay-summary-row total">
                 <span>Total Due</span><span>$491.00</span>
               </div>
-              <button
-                class="auth-btn"
-                style="width: 100%; margin-top: 20px; padding: 13px"
-              >
-                Pay All Invoices
-              </button>
+              <button class="auth-btn pay-all-btn">Pay All Invoices</button>
             </div>
           </div>
         </div>
