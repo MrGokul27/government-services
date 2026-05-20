@@ -1,3 +1,35 @@
+/* ----- Animations ----- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 .about-hero {
   position: relative;
   background: url("/assets/images/bg_single_team.webp") center center / cover
@@ -20,6 +52,10 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+}
+.about-hero .page-hero-content {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
 }
 .about-hero-content h1 {
   font-size: clamp(1.8rem, 4vw, 2.8rem);
@@ -64,6 +100,14 @@
   grid-template-columns: 1fr 1fr;
   gap: 60px;
   align-items: center;
+}
+.about-welcome-text {
+  opacity: 0;
+  animation: fadeInLeft 0.8s ease-out 0.2s forwards;
+}
+.about-welcome-img {
+  opacity: 0;
+  animation: fadeInRight 0.8s ease-out 0.3s forwards;
 }
 .about-welcome-text h2 {
   font-size: clamp(1.4rem, 3vw, 2rem);
@@ -173,12 +217,18 @@
   border-color: #c8102e;
   color: #fff;
 }
+.about-ruling-inner > :first-child {
+  opacity: 0;
+  animation: fadeInLeft 0.8s ease-out 0.2s forwards;
+}
 .about-ruling-right {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
 .about-feature-card {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards;
   background: #fff;
   padding: 28px 20px;
   box-shadow: 0 2px 14px rgba(0, 0, 0, 0.07);
@@ -187,6 +237,25 @@
     box-shadow 0.3s ease,
     border-top 0.3s ease;
   border-top: 3px solid transparent;
+}
+
+.about-ruling-right .about-feature-card:nth-child(1) {
+  animation-delay: 0.3s;
+}
+.about-ruling-right .about-feature-card:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.about-ruling-right .about-feature-card:nth-child(3) {
+  animation-delay: 0.5s;
+}
+.about-ruling-right .about-feature-card:nth-child(4) {
+  animation-delay: 0.6s;
+}
+.about-ruling-right .about-feature-card:nth-child(5) {
+  animation-delay: 0.7s;
+}
+.about-ruling-right .about-feature-card:nth-child(6) {
+  animation-delay: 0.8s;
 }
 
 .about-feature-card:hover {
@@ -223,6 +292,8 @@
   margin: 0 auto;
 }
 .about-ne-title {
+  opacity: 0;
+  animation: fadeInUp 0.7s ease-out 0.1s forwards;
   font-size: 1.7rem;
   font-weight: 700;
   color: #1b2a4a;
@@ -230,6 +301,8 @@
   text-align: center;
 }
 .about-ne-sub {
+  opacity: 0;
+  animation: fadeInUp 0.7s ease-out 0.2s forwards;
   color: #6b7a99;
   font-size: 0.92rem;
   text-align: center;
@@ -246,7 +319,18 @@
   gap: 16px;
   margin-bottom: 24px;
   align-items: flex-start;
+  opacity: 0;
+  animation: fadeInLeft 0.6s ease-out forwards;
   transition: transform 0.3s ease;
+}
+.about-news-card:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.about-news-card:nth-child(2) {
+  animation-delay: 0.35s;
+}
+.about-news-card:nth-child(3) {
+  animation-delay: 0.5s;
 }
 
 .about-news-card:hover {
@@ -296,6 +380,8 @@
   gap: 5px;
 }
 .about-events-box {
+  opacity: 0;
+  animation: fadeInRight 0.8s ease-out 0.3s forwards;
   background: #f5f6fa;
   padding: 32px;
 }
