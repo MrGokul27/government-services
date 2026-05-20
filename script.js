@@ -78,7 +78,7 @@
   ];
 
   let current = 0;
-  const totalMs = 2000;
+  const totalMs = 1200;
   const intervalMs = 16;
   const totalSteps = totalMs / intervalMs;
   let tick = 0;
@@ -100,8 +100,7 @@
       setTimeout(() => {
         preloader.classList.add("fade-out");
         document.body.classList.add("loader-done");
-        // Remove from DOM after transition
-        setTimeout(() => preloader.remove(), 600);
+        setTimeout(() => preloader.remove(), 400);
       }, 200);
     }
   }, intervalMs);
@@ -392,11 +391,10 @@ if (overlay) overlay.addEventListener("click", closeCanvas);
 
 // Search service
 function searchService() {
-  const query = document
-    .getElementById("searchInput")
-    .value.trim()
-    .toLowerCase();
+  const input = document.getElementById("searchInput");
   const result = document.getElementById("searchResult");
+  if (!input || !result) return;
+  const query = input.value.trim().toLowerCase();
   if (!query) {
     result.textContent = "";
     return;
@@ -415,28 +413,34 @@ function searchService() {
 }
 
 // Allow Enter key to trigger search
-document.getElementById("searchInput").addEventListener("keydown", (e) => {
-  if (e.key === "Enter") searchService();
-});
+const _searchInput = document.getElementById("searchInput");
+if (_searchInput) {
+  _searchInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") searchService();
+  });
+}
 
 // Contact form
-document.getElementById("contactForm").addEventListener("submit", function (e) {
-  e.preventDefault();
-  const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const message = document.getElementById("message").value.trim();
-  const msg = document.getElementById("formMsg");
+const _contactForm = document.getElementById("contactForm");
+if (_contactForm) {
+  _contactForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+    const msg = document.getElementById("formMsg");
 
-  if (!name || !email || !message) {
-    msg.textContent = "Please fill in all fields.";
-    msg.className = "mt-3 text-center fw-semibold text-danger";
-    return;
-  }
+    if (!name || !email || !message) {
+      msg.textContent = "Please fill in all fields.";
+      msg.className = "mt-3 text-center fw-semibold text-danger";
+      return;
+    }
 
-  msg.textContent = `Thank you, ${name}! Your message has been sent.`;
-  msg.className = "mt-3 text-center fw-semibold text-success";
-  this.reset();
-});
+    msg.textContent = `Thank you, ${name}! Your message has been sent.`;
+    msg.className = "mt-3 text-center fw-semibold text-success";
+    this.reset();
+  });
+}
 
 // Smooth scroll for nav links
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
