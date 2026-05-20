@@ -33,7 +33,7 @@
 /* HERO */
 .hist-hero {
   position: relative;
-  background: url("assets/images/history_bg_header.webp") center center / cover
+  background: url("../images/history_bg_header.webp") center center / cover
     no-repeat;
   min-height: 220px;
   display: flex;
@@ -121,6 +121,13 @@
   width: 100%;
   height: auto;
   display: block;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+.hist-images-inner img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
 }
 
 /* TIMELINE SECTION */
@@ -198,11 +205,18 @@
   order: 1;
   text-align: right;
 }
+.hist-tl-image {
+  overflow: hidden;
+}
 .hist-tl-image img {
   width: 100%;
   height: 240px;
   object-fit: cover;
   display: block;
+  transition: transform 0.4s ease;
+}
+.hist-tl-item:hover .hist-tl-image img {
+  transform: scale(1.06);
 }
 .hist-tl-connector {
   display: flex;
@@ -219,9 +233,23 @@
   border: 3px solid #fff;
   box-shadow: 0 0 0 3px #c8102e;
   display: block;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.hist-tl-item:hover .hist-tl-dot {
+  transform: scale(1.4);
+  box-shadow: 0 0 0 5px #c8102e;
 }
 .hist-tl-content {
   padding: 0 30px;
+  transition: transform 0.3s ease;
+}
+.hist-tl-item:hover .hist-tl-content {
+  transform: translateX(6px);
+}
+.hist-tl-reverse:hover .hist-tl-content {
+  transform: translateX(-6px);
 }
 .hist-tl-year {
   font-size: 1.6rem;
@@ -235,12 +263,24 @@
   font-weight: 700;
   color: #1b2a4a;
   margin-bottom: 12px;
+  transition: color 0.2s ease;
+}
+.hist-tl-item:hover .hist-tl-content h3 {
+  color: #c8102e;
 }
 .hist-tl-content p {
   color: #6b7a99;
   font-size: 0.88rem;
   line-height: 1.7;
   margin: 0;
+}
+
+/* INTRO HEADING */
+.hist-intro h2 {
+  transition: color 0.2s ease;
+}
+.hist-intro h2:hover {
+  color: #c8102e;
 }
 
 /* LATEST PUBLICATIONS */

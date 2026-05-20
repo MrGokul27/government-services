@@ -33,7 +33,7 @@
 /* HERO */
 .faq-hero {
   position: relative;
-  background: url("assets/images/bg_head_faq.webp") center center / cover
+  background: url("../images/bg_head_faq.webp") center center / cover
     no-repeat;
   min-height: 220px;
   display: flex;

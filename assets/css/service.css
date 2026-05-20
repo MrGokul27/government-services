@@ -33,7 +33,7 @@
 /* HERO */
 .sev-hero {
   position: relative;
-  background: url("assets/images/bg_service_single.webp") center center / cover
+  background: url("../images/bg_service_single.webp") center center / cover
     no-repeat;
   min-height: 220px;
   display: flex;

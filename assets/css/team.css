@@ -33,7 +33,7 @@
 /* HERO */
 .team-hero {
   position: relative;
-  background: url("assets/images/bg_single_team.webp") center center / cover
+  background: url("../images/bg_single_team.webp") center center / cover
     no-repeat;
   min-height: 220px;
   display: flex;

@@ -13,7 +13,7 @@
 /* HERO */
 .dept-hero {
   position: relative;
-  background: url("assets/images/bg_department.webp") center center / cover
+  background: url("../images/bg_department.webp") center center / cover
     no-repeat;
   min-height: 220px;
   display: flex;
