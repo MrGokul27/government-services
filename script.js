@@ -423,6 +423,20 @@ if (_searchInput) {
 // Contact form
 const _contactForm = document.getElementById("contactForm");
 if (_contactForm) {
+  // Custom validation messages that include the field name from the placeholder
+  _contactForm.querySelectorAll("input, textarea, select").forEach((input) => {
+    input.addEventListener("invalid", () => {
+      if (input.validity.valueMissing) {
+        const fieldName = input.getAttribute("placeholder") || "field";
+        const action = input.tagName === "SELECT" ? "select" : "enter";
+        input.setCustomValidity(
+          `Please ${action} your ${fieldName.toLowerCase()}`,
+        );
+      }
+    });
+    input.addEventListener("input", () => input.setCustomValidity(""));
+  });
+
   _contactForm.addEventListener("submit", function (e) {
     e.preventDefault();
     const name = document.getElementById("name").value.trim();
