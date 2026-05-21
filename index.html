@@ -844,6 +844,8 @@
                 type="text"
                 placeholder="Your Name"
                 aria-label="Your Name"
+                pattern="[A-Za-z\s]+"
+                oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '')"
                 required
               />
               <input
