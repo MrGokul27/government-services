@@ -139,16 +139,31 @@
           icon.className = "bi bi-eye";
         }
       }
-      document
-        .getElementById("loginForm")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
-          const role = this.querySelector("select").value;
-          const email = this.querySelector('input[type="email"]').value;
-          sessionStorage.setItem("loggedInUserRole", role);
-          sessionStorage.setItem("loggedInUserEmail", email);
-          window.location.href = "dashboard.html";
+      const loginForm = document.getElementById("loginForm");
+
+      // Custom validation messages that include the field name
+      loginForm.querySelectorAll("input, select").forEach((input) => {
+        input.addEventListener("invalid", () => {
+          const label =
+            input.closest(".auth-field")?.querySelector("label")?.textContent ||
+            "field";
+          const fieldName = label.trim().replace(":", "");
+          const action = input.tagName === "SELECT" ? "select" : "enter";
+          input.setCustomValidity(
+            `Please ${action} your ${fieldName.toLowerCase()}`,
+          );
         });
+        input.addEventListener("input", () => input.setCustomValidity(""));
+      });
+
+      loginForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const role = this.querySelector("select").value;
+        const email = this.querySelector('input[type="email"]').value;
+        sessionStorage.setItem("loggedInUserRole", role);
+        sessionStorage.setItem("loggedInUserEmail", email);
+        window.location.href = "dashboard.html";
+      });
     </script>
   </body>
 </html>

@@ -152,10 +152,27 @@
         }
       }
       const registerForm = document.getElementById("registerForm");
+
+      // Custom validation messages that include the field name
+      registerForm.querySelectorAll("input, select").forEach((input) => {
+        input.addEventListener("invalid", () => {
+          if (input.type === "checkbox") {
+            input.setCustomValidity("Please accept the Terms & Conditions");
+          } else {
+            const label =
+              input.closest(".auth-field")?.querySelector("label")
+                ?.textContent || "field";
+            const fieldName = label.trim().replace(":", "");
+            const action = input.tagName === "SELECT" ? "select" : "enter";
+            input.setCustomValidity(
+              `Please ${action} your ${fieldName.toLowerCase()}`,
+            );
+          }
+        });
+        input.addEventListener("input", () => input.setCustomValidity(""));
+      });
+
       const confirmInput = document.getElementById("confirmPassword");
-      confirmInput.addEventListener("input", () =>
-        confirmInput.setCustomValidity(""),
-      );
       registerForm.addEventListener("submit", function (e) {
         e.preventDefault();
         const pass = document.getElementById("regPass").value;
