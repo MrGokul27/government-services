@@ -123,8 +123,8 @@
 
             <label class="auth-check auth-terms">
               <input type="checkbox" id="terms" required />
-              I agree to the <a href="#">Terms &amp; Conditions</a> and
-              <a href="#">Privacy Policy</a>
+              I agree to the <a href="404.html">Terms &amp; Conditions</a> and
+              <a href="404.html">Privacy Policy</a>
             </label>
 
             <button type="submit" class="auth-btn">
@@ -156,17 +156,19 @@
       // Custom validation messages that include the field name
       registerForm.querySelectorAll("input, select").forEach((input) => {
         input.addEventListener("invalid", () => {
-          if (input.type === "checkbox") {
-            input.setCustomValidity("Please accept the Terms & Conditions");
-          } else {
-            const label =
-              input.closest(".auth-field")?.querySelector("label")
-                ?.textContent || "field";
-            const fieldName = label.trim().replace(":", "");
-            const action = input.tagName === "SELECT" ? "select" : "enter";
-            input.setCustomValidity(
-              `Please ${action} your ${fieldName.toLowerCase()}`,
-            );
+          if (input.validity.valueMissing) {
+            if (input.type === "checkbox") {
+              input.setCustomValidity("Please accept the Terms & Conditions");
+            } else {
+              const label =
+                input.closest(".auth-field")?.querySelector("label")
+                  ?.textContent || "field";
+              const fieldName = label.trim().replace(":", "");
+              const action = input.tagName === "SELECT" ? "select" : "enter";
+              input.setCustomValidity(
+                `Please ${action} your ${fieldName.toLowerCase()}`,
+              );
+            }
           }
         });
         input.addEventListener("input", () => input.setCustomValidity(""));
