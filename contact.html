@@ -106,6 +106,10 @@
                       id="name"
                       class="form-control"
                       placeholder="Name"
+                      pattern="[A-Za-z\s]+"
+                      oninput="
+                        this.value = this.value.replace(/[^A-Za-z\s]/g, '')
+                      "
                       required
                     />
                   </div>
